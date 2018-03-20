@@ -1,0 +1,19 @@
+
+.page-container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.page-body {
+  display: flex;
+  flex: 1;
+}
+
+.page-content {
+  flex: 1;
+}
+
+.page-sidenav{
+  background-color: #A8A8A8;
+}

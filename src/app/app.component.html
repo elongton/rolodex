@@ -1,15 +1,14 @@
-
-
-<div class="" style="display: flex; flex-direction: row; box-orient: horizontal;">
-  <header style="flex: 1;">
+<section class="page-container">
+  <header>
     <app-header></app-header>
   </header>
 
-  <div style="flex: 1;">
-    <app-sidebar></app-sidebar>
+  <div class="page-body">
+    <nav class="page-sidenav">
+      <app-sidebar></app-sidebar>
+    </nav>
+    <main class="page-content">
+      <router-outlet></router-outlet>
+    </main>
   </div>
-  <div style="flex: 1;">
-    <router-outlet></router-outlet>
-  </div>
-
-</div>
+</section>

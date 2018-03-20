@@ -8,11 +8,15 @@ import { ContactListComponent } from './contacts/contact-list/contact-list.compo
 import { ContactDetailComponent } from './contacts/contact-detail/contact-detail.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { ProgramListComponent } from './programs/program-list/program-list.component';
+import { OrganizationListComponent } from './organizations/organization-list/organization-list.component';
 
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/contacts', pathMatch: 'full'},
   {path: 'contacts', component: ContactListComponent},
+  {path: 'organizations', component: OrganizationListComponent},
+  {path: 'programs', component: ProgramListComponent},
 ]
 
 
@@ -23,7 +27,9 @@ const appRoutes: Routes = [
     ContactListComponent,
     ContactDetailComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    ProgramListComponent,
+    OrganizationListComponent
   ],
   imports: [
     BrowserModule,
