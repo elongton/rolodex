@@ -11,6 +11,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProgramListComponent } from './programs/program-list/program-list.component';
 import { OrganizationListComponent } from './organizations/organization-list/organization-list.component';
 import { HeaderManagementService } from './header-management.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/contacts', pathMatch: 'full'},
@@ -26,6 +28,7 @@ const appRoutes: Routes = [
     ContactItemComponent,
     ContactListComponent,
     ContactDetailComponent,
+    HttpClientModule,
     HeaderComponent,
     SidebarComponent,
     ProgramListComponent,
