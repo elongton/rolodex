@@ -10,13 +10,13 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProgramListComponent } from './programs/program-list/program-list.component';
 import { OrganizationListComponent } from './organizations/organization-list/organization-list.component';
-
+import { HeaderManagementService } from './header-management.service';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/contacts', pathMatch: 'full'},
-  {path: 'contacts', component: ContactListComponent},
-  {path: 'organizations', component: OrganizationListComponent},
-  {path: 'programs', component: ProgramListComponent},
+  {path: 'contacts', component: ContactListComponent, data: {page: 'Contacts'}},
+  {path: 'organizations', component: OrganizationListComponent, data: {page: 'Organizations'}},
+  {path: 'programs', component: ProgramListComponent, data: {page: 'Programs'}},
 ]
 
 
@@ -35,7 +35,7 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [],
+  providers: [HeaderManagementService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

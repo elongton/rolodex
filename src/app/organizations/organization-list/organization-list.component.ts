@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { HeaderManagementService } from '../../header-management.service';
+
+
+
 
 @Component({
   selector: 'app-organization-list',
@@ -7,9 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrganizationListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private headerService: HeaderManagementService) { }
 
   ngOnInit() {
+    this.headerService.pageTitle.next('Organizations');
   }
-
 }

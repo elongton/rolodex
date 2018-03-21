@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HeaderManagementService } from '../../header-management.service';
+
+
 
 @Component({
   selector: 'app-program-list',
@@ -7,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProgramListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private headerService: HeaderManagementService) { }
 
   ngOnInit() {
+    this.headerService.pageTitle.next('Programs');
   }
 
 }
