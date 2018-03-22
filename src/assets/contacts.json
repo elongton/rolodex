@@ -1,0 +1,13 @@
+{"contacts":[
+    { "first_name":"John",
+      "last_name":"Doe",
+      "email":"johndoe@gmail.com",
+      "phone":"804-203-4828",
+      "website":"john.com",
+      "street_address": "9238 John Circle",
+      "city":"Richmond",
+      "state":"Virginia",
+      "zip":"32324",
+      "notes":"John is a good guy. He always uses nice language"
+    },
+]}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderManagementService } from '../header-management.service';
+import { HeaderManagementService } from '../shared/header-management.service';
 
 
 @Component({

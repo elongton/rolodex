@@ -10,7 +10,8 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProgramListComponent } from './programs/program-list/program-list.component';
 import { OrganizationListComponent } from './organizations/organization-list/organization-list.component';
-import { HeaderManagementService } from './header-management.service';
+import { HeaderManagementService } from './shared/header-management.service';
+import { DataStorageService } from './shared/datastorage.service';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -28,7 +29,6 @@ const appRoutes: Routes = [
     ContactItemComponent,
     ContactListComponent,
     ContactDetailComponent,
-    HttpClientModule,
     HeaderComponent,
     SidebarComponent,
     ProgramListComponent,
@@ -37,8 +37,9 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
+    HttpClientModule,
   ],
-  providers: [HeaderManagementService],
+  providers: [HeaderManagementService, DataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
