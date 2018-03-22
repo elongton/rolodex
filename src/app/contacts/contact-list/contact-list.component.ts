@@ -11,6 +11,8 @@ import { DataStorageService } from '../../shared/datastorage.service';
 })
 export class ContactListComponent implements OnInit {
 
+  data: any[];
+
   constructor(private headerService: HeaderManagementService,
               private dataService: DataStorageService) { }
 
@@ -18,7 +20,7 @@ export class ContactListComponent implements OnInit {
     this.headerService.pageTitle.next('Contacts');
     this.dataService.getContacts()
       .subscribe(
-        (contacts: Contact[]) => console.log(contacts),
+        (contacts: Contact[]) => this.data = contacts,
         (error) => console.log(error)
       );
   }

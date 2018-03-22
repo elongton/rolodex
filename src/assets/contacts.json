@@ -1,6 +1,7 @@
 {"contacts":[
     { "first_name":"John",
       "last_name":"Doe",
+      "organization":"Toys are Us",
       "email":"johndoe@gmail.com",
       "phone":"804-203-4828",
       "website":"john.com",
@@ -9,5 +10,5 @@
       "state":"Virginia",
       "zip":"32324",
       "notes":"John is a good guy. He always uses nice language"
-    },
+    }
 ]}
