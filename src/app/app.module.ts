@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from "@angular/router";
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ContactItemComponent } from './contacts/contact-item/contact-item.component';
@@ -13,6 +14,7 @@ import { OrganizationListComponent } from './organizations/organization-list/org
 import { HeaderManagementService } from './shared/header-management.service';
 import { DataStorageService } from './shared/datastorage.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ContactFilterPipe } from './contacts/contact-filter.pipe';
 
 
 const appRoutes: Routes = [
@@ -32,12 +34,14 @@ const appRoutes: Routes = [
     HeaderComponent,
     SidebarComponent,
     ProgramListComponent,
-    OrganizationListComponent
+    OrganizationListComponent,
+    ContactFilterPipe
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
+    FormsModule,
   ],
   providers: [HeaderManagementService, DataStorageService],
   bootstrap: [AppComponent]

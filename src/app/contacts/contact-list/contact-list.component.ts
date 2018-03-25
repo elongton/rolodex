@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HeaderManagementService } from '../../shared/header-management.service';
 import { Contact } from '../contact.model';
+import {Observable} from 'rxjs/Observable';
 
 import { DataStorageService } from '../../shared/datastorage.service';
 
@@ -9,22 +10,25 @@ import { DataStorageService } from '../../shared/datastorage.service';
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.css']
 })
-export class ContactListComponent implements OnInit {
+export class ContactListComponent implements OnInit, OnDestroy {
 
-  data: any[];
+  data: Contact[];
+  filteredString = [];
+  myobserver = this.dataService.getContacts().subscribe(
+                  (contacts: Contact[]) => this.data = contacts,
+                  (error) => console.log(error)
+                );
 
   constructor(private headerService: HeaderManagementService,
               private dataService: DataStorageService) { }
 
   ngOnInit() {
     this.headerService.pageTitle.next('Contacts');
-    this.dataService.getContacts()
-      .subscribe(
-        (contacts: Contact[]) => this.data = contacts,
-        (error) => console.log(error)
-      );
   }
 
 
+  ngOnDestroy(){
+    this.myobserver.unsubscribe();
+  }
 
-}
+}//export class ContactListComponent

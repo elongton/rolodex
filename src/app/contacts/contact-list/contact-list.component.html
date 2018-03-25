@@ -1,19 +1,18 @@
 <div style="padding: 10px;">
 
-  <table>
+ <input type="text"
+        [(ngModel)]="filteredString"
+        style="margin-bottom: 10px; height: 20px; width: 150px;"
+        placeholder="Search Anything">
+
+  <table *ngIf="data">
     <tr style="text-align: left;">
       <th>Name</th>
       <th>Organization(s)</th>
       <th>Phone Number</th>
       <th>Email Address</th>
     </tr>
-    <tr>
-      <td>Jill Smith</td>
-      <td>BetterMed</td>
-      <td>501-875-3832</td>
-      <td>jill@bettermed.com</td>
-    </tr>
-    <tr *ngFor="let item of data.contacts">
+    <tr *ngFor="let item of data.contacts | contactFilter:filteredString">
       <td>{{item.first_name}} {{item.last_name}}</td>
       <td>{{item.organization}}</td>
       <td>{{item.phone}}</td>
@@ -21,7 +20,7 @@
     </tr>
   </table>
 
-
+<!-- {{data | async}} -->
 
 
 
