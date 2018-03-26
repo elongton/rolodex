@@ -1,0 +1,38 @@
+<mat-card>
+  <form fxLayout="column" fxLayoutAlign="flex-start flex-start" style="font-size: .8em;">
+    <mat-form-field>
+      <input
+        type="email"
+        matInput
+        placeholder="Email"
+        ngModel
+        name="email"
+        email
+        required
+        #emailInput="ngModel">
+        <mat-error *ngIf="emailInput.hasError('required')">Field must not be empty.</mat-error>
+        <mat-error *ngIf="!emailInput.hasError('required')">Email is invalid.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        placeholder="Organization"
+        ngModel
+        name="organization">
+        <!-- <mat-hint>Organization must exist</mat-hint> -->
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="tel"
+        matInput
+        placeholder="Phone Number"
+        ngModel
+        name="phone">
+    </mat-form-field>
+
+    <button type="submit" mat-raised-button color="primary">Submit</button>
+  </form>
+</mat-card>
