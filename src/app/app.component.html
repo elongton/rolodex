@@ -1,14 +1,17 @@
-<section class="page-container">
+<section class="page-container" fxLayout="column" fxLayoutAlign="start">
   <header>
     <app-header></app-header>
   </header>
 
-  <div class="page-body">
-    <nav class="page-sidenav">
+
+  <mat-sidenav-container fxLayout="row" fxLayoutAlign="start stretch" fxFlex="grow">
+    <mat-sidenav mode="side" opened="true" class="mat-elevation-z4">
       <app-sidebar></app-sidebar>
-    </nav>
-    <main class="page-content">
+    </mat-sidenav>
+    <mat-sidenav-content>
       <router-outlet></router-outlet>
-    </main>
-  </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+
 </section>

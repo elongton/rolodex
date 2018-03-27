@@ -1,0 +1,8 @@
+.fill-remaining-space{
+  flex: 1 1 auto;
+}
+.topspacer{margin-top: 10px;}
+.dashed{border: 1px dashed black;}
+
+mat-toolbar{z-index: 10;}
+mat-drawer{width: 40vw; padding: 10px;}
