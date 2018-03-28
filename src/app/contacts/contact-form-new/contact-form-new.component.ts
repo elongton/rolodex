@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ContactService } from '../contact.service';
+import { Contact } from '../contact.model';
+
 
 @Component({
   selector: 'app-contact-form-new',
@@ -8,13 +11,13 @@ import { NgForm } from '@angular/forms';
 })
 export class ContactFormNewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private contactService: ContactService) { }
 
   ngOnInit() {
   }
 
   onSubmit(form: NgForm){
-    console.log(form);
+    this.contactService.addContact(form.value as Contact).subscribe();
   }
 
 }

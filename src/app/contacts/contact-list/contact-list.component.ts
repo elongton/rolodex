@@ -29,17 +29,11 @@ export class ContactListComponent implements OnInit, OnDestroy {
 
   getContacts(){
     this.myobserver = this.contactService.getContacts().subscribe(
-                    (contacts: Contact[]) => {this.contacts = contacts;},
+                    (contacts: Contact[]) => {this.contacts = contacts; console.log(contacts)},
                     (error) => console.log(error)
                   );
   }
 
-  addContact(){
-    this.dataService.putContact()
-    .subscribe(res => {console.log(res);},
-               err => {console.log("Error occured");}
-               );
-       }
   ngOnDestroy(){
     this.myobserver.unsubscribe();
   }

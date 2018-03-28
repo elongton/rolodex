@@ -1,5 +1,26 @@
 <mat-card>
   <form fxLayout="column" fxLayoutAlign="flex-start flex-start" style="font-size: .8em;" (ngSubmit)='onSubmit(f)' #f='ngForm'>
+
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        placeholder="First Name"
+        ngModel
+        name="first_name">
+        <!-- <mat-hint>Organization must exist</mat-hint> -->
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        placeholder="Last Name"
+        ngModel
+        name="last_name">
+        <!-- <mat-hint>Organization must exist</mat-hint> -->
+    </mat-form-field>
+
     <mat-form-field>
       <input
         type="email"
