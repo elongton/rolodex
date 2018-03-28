@@ -1,18 +1,24 @@
 <div style="padding: 10px;">
 
- <input type="text"
-        [(ngModel)]="filteredString"
-        style="margin-bottom: 10px; height: 20px; width: 150px;"
-        placeholder="Search Anything">
+  <div fxLayout="row">
+    <input
+           type="text"
+           [(ngModel)]="filteredString"
+           style="margin-bottom: 10px; height: 20px; width: 150px;"
+           placeholder="Search Anything">
+      <span fxFlex class="example-spacer"></span>
+     <button fxFlex="150px" mat-button (click)="getContacts();">Retrieve</button>
+  </div>
 
-  <table *ngIf="data">
+
+  <table *ngIf="contacts">
     <tr style="text-align: left;">
       <th>Name</th>
       <th>Organization(s)</th>
       <th>Phone Number</th>
       <th>Email Address</th>
     </tr>
-    <tr *ngFor="let item of data.contacts | contactFilter:filteredString">
+    <tr *ngFor="let item of contacts | contactFilter:filteredString">
       <td>{{item.first_name}} {{item.last_name}}</td>
       <td>{{item.organization}}</td>
       <td>{{item.phone}}</td>
@@ -28,9 +34,5 @@
 <section style="margin-top: 10px;">
   <router-outlet></router-outlet>
 </section>
-
-
-
-<button mat-raised-button color="accent" (click)="addContact()">New</button>
 
 </div>
