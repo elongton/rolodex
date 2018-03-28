@@ -1,3 +1,7 @@
 <div style="padding: 10px;">
-  program-list works!
+  <mat-form-field>
+    <input matInput placeholder="Program Date" [matDatepicker]="picker" [max]="maxDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
 </div>

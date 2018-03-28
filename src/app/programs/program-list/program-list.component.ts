@@ -9,11 +9,13 @@ import { HeaderManagementService } from '../../shared/header-management.service'
   styleUrls: ['./program-list.component.css']
 })
 export class ProgramListComponent implements OnInit {
+  maxDate;
 
   constructor(private headerService: HeaderManagementService) { }
 
   ngOnInit() {
     this.headerService.pageTitle.next('Programs');
+    this.maxDate = new Date();
   }
 
 }

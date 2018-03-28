@@ -26,7 +26,12 @@ export class ContactListComponent implements OnInit, OnDestroy {
     this.headerService.pageTitle.next('Contacts');
   }
 
-
+  addContact(){
+    this.dataService.putContact()
+    .subscribe(res => {console.log(res);},
+               err => {console.log("Error occured");}
+               );
+       }
   ngOnDestroy(){
     this.myobserver.unsubscribe();
   }

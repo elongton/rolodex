@@ -13,13 +13,15 @@ export class DataStorageService {
     return this.httpClient.put('path_to_json', 'body')
   }
 
-  getContacts() {
-    return this.httpClient.get<Contact[]>('http://localhost:4200/assets/contacts.json')
-      .map(
-        (contacts) => {return contacts}
-      )
-  }
+    getContacts() {
+      return this.httpClient.get<Contact[]>('http://localhost:4200/assets/contacts.json')
+        .map(
+          (contacts) => {return contacts}
+        )
+    }
 
-
+    putContact() {
+      return this.httpClient.put('http://localhost:4200/assets/contacts.json', 'this is a test')
+    }
 
 }
