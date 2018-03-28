@@ -9,7 +9,20 @@
       <app-sidebar></app-sidebar>
     </mat-sidenav>
     <mat-sidenav-content fxFlex="grow">
+
+<!-- start -->
+      <mat-sidenav-container class="example-container" *ngIf="shouldRun">
+        <mat-sidenav #sidenav [mode]="mode.value">
+          <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+        </mat-sidenav>
+        <mat-sidenav-content>
+          <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+        </mat-sidenav-content>
+      </mat-sidenav-container>
+<!-- finish -->
+
       <router-outlet></router-outlet>
+
     </mat-sidenav-content>
   </mat-sidenav-container>
 
