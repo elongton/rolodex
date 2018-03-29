@@ -16,13 +16,15 @@
                 <app-header></app-header>
               </header>
               <mat-sidenav-container fxLayout="row" fxFlex="grow" fxLayoutAlign="stretch" >
-                <mat-sidenav mode="side" opened="true" class="mat-elevation-z4" class="dashed">
+                <mat-sidenav mode="side" opened="true" class="mat-elevation-z4">
                   <app-sidebar></app-sidebar>
                 </mat-sidenav>
 
-                <mat-sidenav-content class="dashed" fxFlex="grow">
+                <mat-sidenav-content class="" fxFlex="grow">
                     <router-outlet></router-outlet>
-                    <button mat-fab color="primary" (click)="sidenav.toggle()" style="position: absolute; right: 15px; bottom: 15px;">Toggle</button>
+                    <button mat-fab color="accent" (click)="sidenav.toggle()" style="position: fixed; right: 15px; bottom: 15px;">
+                      <mat-icon aria-label="add item">add</mat-icon>
+                    </button>
                 </mat-sidenav-content>
               </mat-sidenav-container>
 
