@@ -18,11 +18,16 @@ import { DataStorageService } from './shared/datastorage.service';
 import { ContactService } from './contacts/contact.service';
 import { ContactFilterPipe } from './contacts/contact-filter.pipe';
 import { ContactFormNewComponent } from './contacts/contact-form-new/contact-form-new.component';
+import { DrawerService } from './shared/drawer.service';
+import { GlobalService } from './shared/global.service';
 
 
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './shared/in-memory-data.service';
+import { NavBottomComponent } from './widgets/nav-bottom/nav-bottom.component';
+import { OrganizationFormNewComponent } from './organizations/organization-form-new/organization-form-new.component';
+import { ProgramFormNewComponent } from './programs/program-form-new/program-form-new.component';
 
 
 @NgModule({
@@ -36,7 +41,10 @@ import { InMemoryDataService }  from './shared/in-memory-data.service';
     ProgramListComponent,
     OrganizationListComponent,
     ContactFilterPipe,
-    ContactFormNewComponent
+    ContactFormNewComponent,
+    NavBottomComponent,
+    OrganizationFormNewComponent,
+    ProgramFormNewComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +60,12 @@ import { InMemoryDataService }  from './shared/in-memory-data.service';
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
-  providers: [HeaderManagementService, DataStorageService, ContactService],
+  providers: [HeaderManagementService,
+              DataStorageService,
+              ContactService,
+              DrawerService,
+              GlobalService,
+              ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

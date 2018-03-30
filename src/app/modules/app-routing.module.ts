@@ -9,11 +9,9 @@ import { ContactFormNewComponent } from '../contacts/contact-form-new/contact-fo
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/contacts', pathMatch: 'full'},
-  {path: 'contacts', component: ContactListComponent, data: {page: 'Contacts'}, children: [
-    {path: 'create', component: ContactFormNewComponent}
-  ]},
-  {path: 'organizations', component: OrganizationListComponent, data: {page: 'Organizations'}},
-  {path: 'programs', component: ProgramListComponent, data: {page: 'Programs'}},
+  {path: 'contacts', component: ContactListComponent},
+  {path: 'organizations', component: OrganizationListComponent},
+  {path: 'programs', component: ProgramListComponent},
 ]
 
 @NgModule({

@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef} from '@angular/core'
 import {FormControl} from '@angular/forms';
+import { DrawerService } from './shared/drawer.service';
+import { GlobalService } from './shared/global.service';
+
+import { NgSwitch } from '@angular/common';
 
 
 @Component({
@@ -7,8 +11,22 @@ import {FormControl} from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'Rolodex';
   mode = new FormControl('over');
-  shouldRun = true;
+  formName: string = "new_contact";
+  @ViewChild('sidenav') sidenav;
+
+  constructor(private drawer: DrawerService, private globalService: GlobalService){}
+
+  ngOnInit(){
+    this.drawer.formToDisplayOnDrawer
+      .subscribe(
+        (formToDisplayOnDrawer: string) => {
+          this.formName = formToDisplayOnDrawer;
+          this.sidenav.toggle()
+        }
+      )//subscribe
+  }//ngOnInit
+
 }

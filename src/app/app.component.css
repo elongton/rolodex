@@ -2,11 +2,17 @@
   min-height: 100vh;
 }
 
-mat-sidenav{width: 120px;}
+#drawer{
+  min-width: 70%;
+  padding: 25px;}
 .dashed{border: 1px dashed black;}
 
 
-
+app-nav-bottom{
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+}
 
 .example-sidenav-content {
   display: flex;
