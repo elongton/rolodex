@@ -1,11 +1,11 @@
 <div fxLayout="row" fxLayoutAlign="end center">
 
-  <div class="popup_menu" style="margin-right: 15px;" [@buttonState]="state">
-    <button mat-raised-button color="primary" (click)="slideDrawer('new_program')">Program</button>
-    <button mat-raised-button color="primary" (click)="slideDrawer('new_org')">Organization</button>
-    <button mat-raised-button color="primary" (click)="slideDrawer('new_contact')">Contact</button>
+  <div class="popup_menu" style="margin-right: 15px;" [@buttonState]="state" (clickOutside)="onClickedOutside()" [exclude]="'#add_menu_button'">
+    <button class="newformclass" mat-raised-button color="primary" (click)="slideDrawer('new_program')">Program</button>
+    <button class="newformclass" mat-raised-button color="primary" (click)="slideDrawer('new_org')">Organization</button>
+    <button class="newformclass" mat-raised-button color="primary" (click)="slideDrawer('new_contact')">Contact</button>
   </div>
-  <button mat-fab color="accent" (click)="toggleState()">
+  <button id="add_menu_button" mat-fab color="accent" (click)="toggleState()">
     <mat-icon aria-label="add item">add</mat-icon>
   </button>
 </div>

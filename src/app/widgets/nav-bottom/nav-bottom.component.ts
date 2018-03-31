@@ -24,9 +24,8 @@ export class NavBottomComponent implements OnInit {
   ngOnInit() {}
 
   toggleState() {this.state = this.state === 'active' ? 'inactive' : 'active';}
-  slideDrawer(itemType){
-    this.drawer.formToDisplayOnDrawer.next(itemType);
-  }
+  slideDrawer(itemType){this.drawer.formToDisplayOnDrawer.next(itemType);}
+  onClickedOutside(){this.state = 'inactive';}
 }
 
 //(click)="sidenav.toggle()"

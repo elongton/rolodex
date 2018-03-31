@@ -1,11 +1,14 @@
+//angular modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+//internal
 import { CoreModule } from './modules/core.module';
+import { AppComponent } from './app.component';
 import { AppRoutingModule } from './modules/app-routing.module';
 import { MaterialModule } from './modules/material.module';
-import { FormsModule } from '@angular/forms';
-
-import { AppComponent } from './app.component';
 import { ContactItemComponent } from './contacts/contact-item/contact-item.component';
 import { ContactListComponent } from './contacts/contact-list/contact-list.component';
 import { ContactDetailComponent } from './contacts/contact-detail/contact-detail.component';
@@ -20,14 +23,14 @@ import { ContactFilterPipe } from './contacts/contact-filter.pipe';
 import { ContactFormNewComponent } from './contacts/contact-form-new/contact-form-new.component';
 import { DrawerService } from './shared/drawer.service';
 import { GlobalService } from './shared/global.service';
-
-
-import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './shared/in-memory-data.service';
 import { NavBottomComponent } from './widgets/nav-bottom/nav-bottom.component';
 import { OrganizationFormNewComponent } from './organizations/organization-form-new/organization-form-new.component';
 import { ProgramFormNewComponent } from './programs/program-form-new/program-form-new.component';
+
+//external
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { ClickOutsideModule } from 'ng-click-outside';
 
 
 @NgModule({
@@ -53,6 +56,7 @@ import { ProgramFormNewComponent } from './programs/program-form-new/program-for
     AppRoutingModule,
     FormsModule,
     MaterialModule,
+    ClickOutsideModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
