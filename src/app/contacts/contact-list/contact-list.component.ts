@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { HeaderManagementService } from '../../shared/header-management.service';
 import { Contact } from '../contact.model';
 import { ContactService } from '../contact.service';
@@ -6,6 +6,8 @@ import { ContactService } from '../contact.service';
 import {Observable} from 'rxjs/Observable';
 
 import { DataStorageService } from '../../shared/datastorage.service';
+import { MatTableDataSource, MatSort } from '@angular/material';
+
 
 @Component({
   selector: 'app-contact-list',
@@ -14,9 +16,12 @@ import { DataStorageService } from '../../shared/datastorage.service';
 })
 export class ContactListComponent implements OnInit, OnDestroy {
 
-  contacts: Contact[];
+  // contacts: Contact[];
+  dataSource;
   filteredString = [];
   myobserver;
+  @ViewChild(MatSort) sort: MatSort;
+  displayedColumns = ['last_name', 'organization', 'phone', 'email'];
 
   constructor(private headerService: HeaderManagementService,
               private dataService: DataStorageService,
@@ -25,17 +30,30 @@ export class ContactListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.headerService.pageTitle.next('Contacts');
     this.getContacts();
+
+    setTimeout(() => this.dataSource.sort = this.sort, 1000);
   }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+
 
   getContacts(){
     this.myobserver = this.contactService.getContacts().subscribe(
-                    (contacts: Contact[]) => {this.contacts = contacts; console.log(contacts)},
+                    (contacts: Contact[]) => {
+                      this.dataSource = new MatTableDataSource(contacts);
+                    },
                     (error) => console.log(error)
                   );
   }
-
   ngOnDestroy(){
     this.myobserver.unsubscribe();
   }
+
+
+
 
 }//export class ContactListComponent
