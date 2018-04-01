@@ -1,6 +1,6 @@
 <div fxLayout="row" fxLayoutAlign="end center">
 
-  <div class="popup_menu" style="margin-right: 15px;" [@buttonState]="state" (clickOutside)="onClickedOutside()" [exclude]="'#add_menu_button'">
+  <div class="popup_menu" style="margin-right: 15px;" [@buttonState]="state" (clickOutside)="onClickedOutside()" [exclude]="'#add_menu_button'" *ngIf="state == 'active'">
     <button class="newformclass" mat-raised-button color="primary" (click)="slideDrawer('new_program')">Program</button>
     <button class="newformclass" mat-raised-button color="primary" (click)="slideDrawer('new_org')">Organization</button>
     <button class="newformclass" mat-raised-button color="primary" (click)="slideDrawer('new_contact')">Contact</button>
