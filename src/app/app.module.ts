@@ -17,8 +17,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProgramListComponent } from './programs/program-list/program-list.component';
 import { OrganizationListComponent } from './organizations/organization-list/organization-list.component';
 import { HeaderManagementService } from './shared/header-management.service';
-import { DataStorageService } from './shared/datastorage.service';
-import { ContactService } from './contacts/contact.service';
+import { HttpService } from './shared/http.service';
 import { ContactFilterPipe } from './contacts/contact-filter.pipe';
 import { ContactFormNewComponent } from './contacts/contact-form-new/contact-form-new.component';
 import { DrawerService } from './shared/drawer.service';
@@ -27,10 +26,12 @@ import { InMemoryDataService }  from './shared/in-memory-data.service';
 import { NavBottomComponent } from './widgets/nav-bottom/nav-bottom.component';
 import { OrganizationFormNewComponent } from './organizations/organization-form-new/organization-form-new.component';
 import { ProgramFormNewComponent } from './programs/program-form-new/program-form-new.component';
+import { reducers } from './app.reducer';
 
 //external
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ClickOutsideModule } from 'ng-click-outside';
+import { StoreModule } from '@ngrx/store';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { ClickOutsideModule } from 'ng-click-outside';
     FormsModule,
     MaterialModule,
     ClickOutsideModule,
+    StoreModule.forRoot(reducers),
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
@@ -65,8 +67,7 @@ import { ClickOutsideModule } from 'ng-click-outside';
     )
   ],
   providers: [HeaderManagementService,
-              DataStorageService,
-              ContactService,
+              HttpService,
               DrawerService,
               GlobalService,
               ],
