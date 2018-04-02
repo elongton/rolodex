@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
 import { HeaderManagementService } from '../../shared/header-management.service';
 import { Contact } from '../contact.model';
 import { ContactService } from '../contact.service';
@@ -31,7 +31,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
     this.headerService.pageTitle.next('Contacts');
     this.getContacts();
 
-    setTimeout(() => this.dataSource.sort = this.sort, 1000);
+
   }
 
   applyFilter(filterValue: string) {
@@ -45,10 +45,13 @@ export class ContactListComponent implements OnInit, OnDestroy {
     this.myobserver = this.contactService.getContacts().subscribe(
                     (contacts: Contact[]) => {
                       this.dataSource = new MatTableDataSource(contacts);
+                      this.dataSource.sort = this.sort;
                     },
-                    (error) => console.log(error)
+                    (error) => {console.log(error)}
                   );
-  }
+  }//getContacts
+
+
   ngOnDestroy(){
     this.myobserver.unsubscribe();
   }
