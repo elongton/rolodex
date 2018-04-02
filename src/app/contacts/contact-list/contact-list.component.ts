@@ -51,6 +51,9 @@ export class ContactListComponent implements OnInit, OnDestroy {
                   );
   }//getContacts
 
+  clickedARow(row){
+    console.log(row)
+  }
 
   ngOnDestroy(){
     this.myobserver.unsubscribe();
