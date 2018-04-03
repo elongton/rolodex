@@ -1,7 +1,10 @@
 <div style="padding: 10px;">
-  <mat-form-field>
-    <input matInput placeholder="Program Date" [matDatepicker]="picker" [max]="maxDate">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+  <mat-card>
+    <mat-form-field>
+      <input matInput placeholder="Program Date" [matDatepicker]="picker" [max]="maxDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </mat-card>
+
 </div>
