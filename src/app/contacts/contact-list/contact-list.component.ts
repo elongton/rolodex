@@ -4,7 +4,7 @@ import { Contact } from '../contact.model';
 import {Observable} from 'rxjs/Observable';
 import { HttpService } from '../../shared/http.service';
 import { MatTableDataSource, MatSort } from '@angular/material';
-import { map } from 'rxjs/operators';
+import 'rxjs/add/operator/toPromise';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../app.reducer'
 import * as UI from '../../shared/ui.actions'
@@ -15,11 +15,10 @@ import * as UI from '../../shared/ui.actions'
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.css']
 })
-export class ContactListComponent implements OnInit, OnDestroy {
+export class ContactListComponent implements OnInit {
 
   // contacts: Contact[];
   dataSource;
-  myobserver;
   isLoading: Observable<boolean>;
   filteredString = [];
   @ViewChild(MatSort) sort: MatSort;
@@ -32,7 +31,13 @@ export class ContactListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.isLoading = this.store.select(fromRoot.getIsLoading);
     this.headerService.pageTitle.next('Contacts');
-    this.getContacts();
+    this.http.getContacts()
+      // .subscribe(
+      //   (contacts) => {
+      //     console.log(contacts)
+      //     this.dataSource = new MatTableDataSource(contacts);
+      //     this.dataSource.sort = this.sort;
+      //   });
   }
 
   applyFilter(filterValue: string) {
@@ -41,26 +46,10 @@ export class ContactListComponent implements OnInit, OnDestroy {
     this.dataSource.filter = filterValue;
   }
 
-  getContacts(){
-    this.myobserver = this.http.getContacts().subscribe(
-                    (contacts: Contact[]) => {
-                      this.dataSource = new MatTableDataSource(contacts);
-                      this.dataSource.sort = this.sort;
-                      this.store.dispatch(new UI.StopLoading())
-                    },
-                    (error) => {console.log(error)}
-                  );
-  }//getContacts
 
   clickedARow(row){
     console.log(row)
   }
-
-  ngOnDestroy(){
-    this.myobserver.unsubscribe();
-  }
-
-
 
 
 }//export class ContactListComponent

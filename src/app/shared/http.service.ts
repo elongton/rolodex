@@ -18,9 +18,16 @@ export class HttpService {
   constructor(private http: HttpClient,
               private store: Store<fromRoot.State>,) {}
 
-  getContacts (): Observable<Contact[]> {
+  getContacts(){
     this.store.dispatch(new UI.StartLoading())
     return this.http.get<Contact[]>(this.contactsUrl)
+      .subscribe(
+            (contacts: Contact[]) => {
+              this.store.dispatch(new UI.StopLoading())
+              return contacts;
+            },
+            (error) => {console.log(error)}
+        );
   }
   /** POST: add a new hero to the server */
   addContact(contact: Contact): Observable<Contact> {
