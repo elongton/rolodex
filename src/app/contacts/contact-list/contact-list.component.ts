@@ -25,28 +25,35 @@ export class ContactListComponent implements OnInit {
   displayedColumns = ['last_name', 'organization', 'phone', 'email'];
 
   constructor(private headerService: HeaderManagementService,
-              private http: HttpService,
+              private httpService: HttpService,
               private store: Store<fromRoot.State>) { }
+
+
+
 
   ngOnInit() {
     this.isLoading = this.store.select(fromRoot.getIsLoading);
     this.headerService.pageTitle.next('Contacts');
-    this.http.getContacts()
-      // .subscribe(
-      //   (contacts) => {
-      //     console.log(contacts)
-      //     this.dataSource = new MatTableDataSource(contacts);
-      //     this.dataSource.sort = this.sort;
-      //   });
+    this.getContacts();
   }
+  
+  getContacts(){
+    this.httpService.getContacts()
+      .subscribe(
+        (contacts) => {
+          console.log(contacts)
+          this.dataSource = new MatTableDataSource(contacts);
+          this.dataSource.sort = this.sort;
+        });
+  }
+
+
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
-
-
   clickedARow(row){
     console.log(row)
   }
