@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { HttpService } from '../../shared/http.service';
+import { ContactService } from '../contact.service';
 import { Contact } from '../contact.model';
 
 
@@ -11,7 +11,7 @@ import { Contact } from '../contact.model';
 })
 export class ContactFormNewComponent implements OnInit {
 
-  constructor(private http: HttpService) { }
+  constructor(private http: ContactService) { }
 
   ngOnInit() {
   }

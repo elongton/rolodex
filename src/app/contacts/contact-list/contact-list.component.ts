@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
 import { HeaderManagementService } from '../../shared/header-management.service';
 import { Contact } from '../contact.model';
 import {Observable} from 'rxjs/Observable';
-import { HttpService } from '../../shared/http.service';
+import { ContactService } from '../contact.service';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import 'rxjs/add/operator/toPromise';
 import { Store } from '@ngrx/store';
@@ -25,10 +25,8 @@ export class ContactListComponent implements OnInit {
   displayedColumns = ['last_name', 'organization', 'phone', 'email'];
 
   constructor(private headerService: HeaderManagementService,
-              private httpService: HttpService,
+              private httpService: ContactService,
               private store: Store<fromRoot.State>) { }
-
-
 
 
   ngOnInit() {
@@ -36,12 +34,12 @@ export class ContactListComponent implements OnInit {
     this.headerService.pageTitle.next('Contacts');
     this.getContacts();
   }
-  
+
   getContacts(){
     this.httpService.getContacts()
       .subscribe(
         (contacts) => {
-          console.log(contacts)
+          // console.log(contacts)
           this.dataSource = new MatTableDataSource(contacts);
           this.dataSource.sort = this.sort;
         });

@@ -1,15 +1,16 @@
 import { Action } from '@ngrx/store';
+import { Contact } from './contact.model';
 
-export const START_LOADING = '[UI] Start Loading';
-export const STOP_LOADING = '[UI] Stop Loading';
+export const DOWNLOAD_CONTACTS = '[Contacts] Download Contacts';
 
+export class SetContacts implements Action {
+  readonly type = DOWNLOAD_CONTACTS;
 
-export class StartLoading implements Action {
-  readonly type = START_LOADING;
+  constructor(public payload: Contact[]){}
 }
 
-export class StopLoading implements Action {
-  readonly type = STOP_LOADING;
-}
+// export class StopLoading implements Action {
+//   readonly type = STOP_LOADING;
+// }
 
-export type ContactActions = StartLoading | StopLoading;
+export type ContactActions = SetContacts;

@@ -9,17 +9,12 @@ import { CoreModule } from './modules/core.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './modules/app-routing.module';
 import { MaterialModule } from './modules/material.module';
-import { ContactItemComponent } from './contacts/contact-item/contact-item.component';
-import { ContactListComponent } from './contacts/contact-list/contact-list.component';
-import { ContactDetailComponent } from './contacts/contact-detail/contact-detail.component';
+
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProgramListComponent } from './programs/program-list/program-list.component';
 import { OrganizationListComponent } from './organizations/organization-list/organization-list.component';
 import { HeaderManagementService } from './shared/header-management.service';
-import { HttpService } from './shared/http.service';
-import { ContactFilterPipe } from './contacts/contact-filter.pipe';
-import { ContactFormNewComponent } from './contacts/contact-form-new/contact-form-new.component';
 import { DrawerService } from './shared/drawer.service';
 import { GlobalService } from './shared/global.service';
 import { InMemoryDataService }  from './shared/in-memory-data.service';
@@ -28,6 +23,9 @@ import { OrganizationFormNewComponent } from './organizations/organization-form-
 import { ProgramFormNewComponent } from './programs/program-form-new/program-form-new.component';
 import { reducers } from './app.reducer';
 
+
+import { ContactService } from './contacts/contact.service';
+import { ContactModule } from './contacts/contact.module';
 //external
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ClickOutsideModule } from 'ng-click-outside';
@@ -37,20 +35,16 @@ import { StoreModule } from '@ngrx/store';
 @NgModule({
   declarations: [
     AppComponent,
-    ContactItemComponent,
-    ContactListComponent,
-    ContactDetailComponent,
     HeaderComponent,
     SidebarComponent,
     ProgramListComponent,
     OrganizationListComponent,
-    ContactFilterPipe,
-    ContactFormNewComponent,
     NavBottomComponent,
     OrganizationFormNewComponent,
     ProgramFormNewComponent
   ],
   imports: [
+    ContactModule,
     BrowserModule,
     CoreModule,
     HttpClientModule,
@@ -67,7 +61,7 @@ import { StoreModule } from '@ngrx/store';
     )
   ],
   providers: [HeaderManagementService,
-              HttpService,
+              ContactService,
               DrawerService,
               GlobalService,
               ],

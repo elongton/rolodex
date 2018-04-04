@@ -1,25 +1,23 @@
 import { Action } from '@ngrx/store';
-import { ContactActionsgit  } from './contact.actions';
+import { ContactActions, DOWNLOAD_CONTACTS } from './contact.actions';
 import { Contact } from './contact.model';
 
+import * as fromRoot from '../app.reducer';
 
-export interface State {
+export interface ContactState {
   contacts: Contact[];
 };
 
-const initialState: State = {
+const initialState: ContactState = {
   contacts: []
 };
 
-export function contactReducer(state = initialState, action: UIActions) {
+export function contactReducer(state = initialState, action: ContactActions) {
   switch (action.type) {
-    case START_LOADING:
+    case DOWNLOAD_CONTACTS:
       return {
-        isLoading: true
-      };
-    case STOP_LOADING:
-      return {
-        isLoading: false
+        ...state,
+        contacts: action.payload
       };
     default: {
       return state;
@@ -28,4 +26,4 @@ export function contactReducer(state = initialState, action: UIActions) {
 }
 
 
-export const getIsLoading = (state: State) => state.isLoading;
+export const downloadContacts = (state: ContactState) => state.contacts;
