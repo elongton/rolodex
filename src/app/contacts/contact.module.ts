@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '../modules/material.module';
 import { CoreModule } from '../modules/core.module';
@@ -19,7 +18,6 @@ import { ContactFormNewComponent } from './contact-form-new/contact-form-new.com
     ContactFormNewComponent
   ],
   imports: [
-    CommonModule,
     FormsModule,
     MaterialModule,
     CoreModule,
