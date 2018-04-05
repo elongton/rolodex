@@ -1,8 +1,8 @@
 import { Action } from '@ngrx/store';
-import { ContactActions, DOWNLOAD_CONTACTS } from './contact.actions';
+import { ContactActions, DOWNLOAD_CONTACTS, ADD_CONTACT } from './contact.actions';
 import { Contact } from '../contact.model';
 
-import * as fromRoot from '../../app.reducer';
+import * as fromRoot from '../../store/app.reducer';
 
 export interface ContactState {
   contacts: Contact[];
@@ -19,6 +19,11 @@ export function contactReducer(state = initialState, action: ContactActions) {
         ...state,
         contacts: action.payload
       };
+    case ADD_CONTACT:
+      return {
+        ...state,
+        contacts: [...state.contacts, action.payload]
+      }
     default: {
       return state;
     }
@@ -26,4 +31,4 @@ export function contactReducer(state = initialState, action: ContactActions) {
 }
 
 
-export const downloadContacts = (state: ContactState) => state.contacts;
+export const getContactState = (state: ContactState) => state.contacts;

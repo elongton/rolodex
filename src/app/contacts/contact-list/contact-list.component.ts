@@ -6,7 +6,7 @@ import { ContactService } from '../contact.service';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import 'rxjs/add/operator/toPromise';
 import { Store } from '@ngrx/store';
-import * as fromRoot from '../../app.reducer'
+import * as fromRoot from '../../store/app.reducer'
 import * as UI from '../../shared/ui.actions'
 
 
@@ -16,41 +16,33 @@ import * as UI from '../../shared/ui.actions'
   styleUrls: ['./contact-list.component.css']
 })
 export class ContactListComponent implements OnInit {
-
-  // contacts: Contact[];
-  dataSource;
-  isLoading: Observable<boolean>;
+  isLoading: Observable<boolean>
+  contactListState: Observable<Contact[]>
   filteredString = [];
   @ViewChild(MatSort) sort: MatSort;
   displayedColumns = ['last_name', 'organization', 'phone', 'email'];
 
   constructor(private headerService: HeaderManagementService,
-              private httpService: ContactService,
-              private store: Store<fromRoot.State>) { }
+              private contactService: ContactService,
+              private store: Store<fromRoot.State>){}
 
 
   ngOnInit() {
-    this.isLoading = this.store.select(fromRoot.getIsLoading);
+    this.isLoading = this.store.select(fromRoot.isLoading);
+    this.contactListState = this.store.select(fromRoot.contactState)
+
     this.headerService.pageTitle.next('Contacts');
     this.getContacts();
   }
 
   getContacts(){
-    this.httpService.getContacts()
-      .subscribe(
-        (contacts) => {
-          // console.log(contacts)
-          this.dataSource = new MatTableDataSource(contacts);
-          this.dataSource.sort = this.sort;
-        });
+    this.contactService.downloadContacts();
   }
-
-
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
+    this.contactListState.filter = filterValue;
   }
   clickedARow(row){
     console.log(row)
@@ -58,3 +50,12 @@ export class ContactListComponent implements OnInit {
 
 
 }//export class ContactListComponent
+
+
+// this.httpService.getContacts()
+//   .subscribe(
+//     (contacts) => {
+//       // console.log(contacts)
+//       this.dataSource = new MatTableDataSource(contacts);
+//       this.dataSource.sort = this.sort;
+//     });

@@ -41,6 +41,32 @@ export class InMemoryDataService implements InMemoryDbService {
         // state:'Virginia',
         // zip:'32324',
         // notes:'John is a good guy. He always uses nice language'
+      },
+      { id: 4,
+        first_name:'Johnny',
+        last_name:'English',
+        organization:'MI7',
+        email:'johnny@mi7.org',
+        phone:'804-232-9847'
+        // website:'john.com',
+        // street_address: '9238 John Circle',
+        // city:'Richmond',
+        // state:'Virginia',
+        // zip:'32324',
+        // notes:'John is a good guy. He always uses nice language'
+      },
+      { id: 5,
+        first_name:'Rick',
+        last_name:'Tinner',
+        organization:'Rin Tin Tin',
+        email:'tinnerbach@gmail.com',
+        phone:'202-494-0494'
+        // website:'john.com',
+        // street_address: '9238 John Circle',
+        // city:'Richmond',
+        // state:'Virginia',
+        // zip:'32324',
+        // notes:'John is a good guy. He always uses nice language'
       }
     ];
     return {contacts};

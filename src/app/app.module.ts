@@ -21,7 +21,7 @@ import { InMemoryDataService }  from './shared/in-memory-data.service';
 import { NavBottomComponent } from './widgets/nav-bottom/nav-bottom.component';
 import { OrganizationFormNewComponent } from './organizations/organization-form-new/organization-form-new.component';
 import { ProgramFormNewComponent } from './programs/program-form-new/program-form-new.component';
-import { reducers } from './app.reducer';
+import { reducers } from './store/app.reducer';
 
 
 import { ContactService } from './contacts/contact.service';

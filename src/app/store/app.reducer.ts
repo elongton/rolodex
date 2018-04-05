@@ -1,6 +1,6 @@
 import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
-import * as fromUi from './shared/ui.reducer';
-import * as fromContact from './contacts/store/contact.reducer';
+import * as fromUi from '../shared/ui.reducer';
+import * as fromContact from '../contacts/store/contact.reducer';
 
 export interface State {
   ui: fromUi.State;
@@ -15,8 +15,6 @@ export const reducers: ActionReducerMap<State> = {
 export const getUiState = createFeatureSelector<fromUi.State>('ui');
 export const getContactState = createFeatureSelector<fromContact.ContactState>('contact');
 
-
-
-
-export const getIsLoading = createSelector(getUiState, fromUi.getIsLoading);
-export const getContacts = createSelector(getContactState, fromContact.downloadContacts);
+//created selectors
+export const isLoading = createSelector(getUiState, fromUi.getIsLoadingState);
+export const contactState = createSelector(getContactState, fromContact.getContactState);
