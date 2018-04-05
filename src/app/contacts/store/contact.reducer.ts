@@ -1,8 +1,8 @@
 import { Action } from '@ngrx/store';
 import { ContactActions, DOWNLOAD_CONTACTS } from './contact.actions';
-import { Contact } from './contact.model';
+import { Contact } from '../contact.model';
 
-import * as fromRoot from '../app.reducer';
+import * as fromRoot from '../../app.reducer';
 
 export interface ContactState {
   contacts: Contact[];

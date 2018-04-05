@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Contact } from './contact.model';
+import { Contact } from '../contact.model';
 
 export const DOWNLOAD_CONTACTS = '[Contacts] Download Contacts';
 

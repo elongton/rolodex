@@ -1,6 +1,6 @@
 import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromUi from './shared/ui.reducer';
-import * as fromContact from './contacts/contact.reducer';
+import * as fromContact from './contacts/store/contact.reducer';
 
 export interface State {
   ui: fromUi.State;
