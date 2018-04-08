@@ -7,7 +7,7 @@ import { MatTableDataSource, MatSort } from '@angular/material';
 import 'rxjs/add/operator/toPromise';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../store/app.reducer'
-import * as UI from '../../shared/ui.actions'
+import * as UI from '../../store/ui/ui.actions'
 
 
 @Component({
@@ -53,12 +53,3 @@ export class ContactListComponent implements OnInit {
 
 
 }//export class ContactListComponent
-
-
-// this.httpService.getContacts()
-//   .subscribe(
-//     (contacts) => {
-//       // console.log(contacts)
-//       this.dataSource = new MatTableDataSource(contacts);
-//       this.dataSource.sort = this.sort;
-//     });

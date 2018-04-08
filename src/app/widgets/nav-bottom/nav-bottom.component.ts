@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {trigger, state, style, animate, transition} from '@angular/animations';
 import { DrawerService } from '../../shared/drawer.service';
-import { GlobalService } from '../../shared/global.service';
+// import { GlobalService } from '../../shared/global.service';
 
 @Component({
   selector: 'app-nav-bottom',
@@ -21,7 +21,9 @@ import { GlobalService } from '../../shared/global.service';
 export class NavBottomComponent implements OnInit {
 
   state='inactive';
-  constructor(private drawer: DrawerService, private globalService: GlobalService) { }
+  constructor(private drawer: DrawerService,
+              // private globalService: GlobalService
+            ) { }
 
   ngOnInit() {}
 

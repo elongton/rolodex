@@ -16,7 +16,6 @@ import { ProgramListComponent } from './programs/program-list/program-list.compo
 import { OrganizationListComponent } from './organizations/organization-list/organization-list.component';
 import { HeaderManagementService } from './shared/header-management.service';
 import { DrawerService } from './shared/drawer.service';
-import { GlobalService } from './shared/global.service';
 import { InMemoryDataService }  from './shared/in-memory-data.service';
 import { NavBottomComponent } from './widgets/nav-bottom/nav-bottom.component';
 import { OrganizationFormNewComponent } from './organizations/organization-form-new/organization-form-new.component';
@@ -62,8 +61,7 @@ import { StoreModule } from '@ngrx/store';
   ],
   providers: [HeaderManagementService,
               ContactService,
-              DrawerService,
-              GlobalService,
+              DrawerService
               ],
   bootstrap: [AppComponent]
 })

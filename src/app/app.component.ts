@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef} from '@angular/core'
 import {FormControl} from '@angular/forms';
 import { DrawerService } from './shared/drawer.service';
-import { GlobalService } from './shared/global.service';
 
 import { NgSwitch } from '@angular/common';
 
@@ -17,7 +16,7 @@ export class AppComponent implements OnInit{
   formName: string = "new_contact";
   @ViewChild('sidenav') sidenav;
 
-  constructor(private drawer: DrawerService, private globalService: GlobalService){}
+  constructor(private drawer: DrawerService){}
 
   ngOnInit(){
     this.drawer.formToDisplayOnDrawer

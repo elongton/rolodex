@@ -5,7 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import { Contact } from './contact.model';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../store/app.reducer'
-import * as UI from '../shared/ui.actions'
+import * as UI from '../store/ui/ui.actions'
 import * as CT from '../contacts/store/contact.actions';
 
 const httpOptions = {
@@ -28,10 +28,6 @@ export class ContactService {
         })
       )//map
   }//getcontacts
-
-
-
-
 
   addContact(contact: Contact): Observable<Contact> {
     return this.http.post<Contact>(this.contactsUrl, contact, httpOptions)

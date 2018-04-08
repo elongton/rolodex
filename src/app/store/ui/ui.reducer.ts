@@ -25,7 +25,7 @@ export function uiReducer(state = initialState, action: UIActions) {
       return state;
     }
   }
-}
+}//uiReducer
 
 
 export const getIsLoadingState = (state: State) => state.isLoading;
