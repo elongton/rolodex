@@ -17,7 +17,7 @@ import * as UI from '../../shared/ui.actions'
 })
 export class ContactListComponent implements OnInit {
   isLoading: Observable<boolean>
-  contactListState: Observable<Contact[]>
+  contactListState =  new MatTableDataSource<Contact>();
   filteredString = [];
   @ViewChild(MatSort) sort: MatSort;
   displayedColumns = ['last_name', 'organization', 'phone', 'email'];
@@ -28,12 +28,15 @@ export class ContactListComponent implements OnInit {
 
 
   ngOnInit() {
-    this.isLoading = this.store.select(fromRoot.isLoading);
-    this.contactListState = this.store.select(fromRoot.contactState)
-
     this.headerService.pageTitle.next('Contacts');
+    this.isLoading = this.store.select(fromRoot.isLoading);
+    this.store.select(fromRoot.contactState)
+      .subscribe(contactstate => {
+        this.contactListState.data = contactstate;
+        this.contactListState.sort = this.sort;})
     this.getContacts();
-  }
+    }
+
 
   getContacts(){
     this.contactService.downloadContacts();
