@@ -1,14 +1,13 @@
 import { Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
-import { HeaderManagementService } from '../../shared/header-management.service';
 import { Contact } from '../contact.model';
 import {Observable} from 'rxjs/Observable';
-import { ContactService } from '../contact.service';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import 'rxjs/add/operator/toPromise';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../store/app.reducer'
+import * as fromUi from '../../store/ui/ui.reducer';
 import * as UI from '../../store/ui/ui.actions'
-
+import * as CT from '../store/contact.actions';
 
 @Component({
   selector: 'app-contact-list',
@@ -16,30 +15,29 @@ import * as UI from '../../store/ui/ui.actions'
   styleUrls: ['./contact-list.component.css']
 })
 export class ContactListComponent implements OnInit {
-  isLoading: Observable<boolean>
+  isLoading: Observable<fromUi.State>
   contactListState =  new MatTableDataSource<Contact>();
   filteredString = [];
   @ViewChild(MatSort) sort: MatSort;
   displayedColumns = ['last_name', 'organization', 'phone', 'email'];
 
-  constructor(private headerService: HeaderManagementService,
-              private contactService: ContactService,
-              private store: Store<fromRoot.State>){}
+  constructor(private store: Store<fromRoot.AppState>){}
 
 
   ngOnInit() {
-    this.headerService.pageTitle.next('Contacts');
-    this.isLoading = this.store.select(fromRoot.isLoading);
-    this.store.select(fromRoot.contactState)
+    this.store.dispatch(new UI.ChangeHeaderTitle('Contacts'))
+    this.isLoading = this.store.select('ui')
+    this.store.select('contact')
       .subscribe(contactstate => {
-        this.contactListState.data = contactstate;
+        this.contactListState.data = contactstate.contacts;
         this.contactListState.sort = this.sort;})
     this.getContacts();
     }
 
 
   getContacts(){
-    this.contactService.downloadContacts();
+    this.store.dispatch(new UI.StartLoading())
+    this.store.dispatch(new CT.TryDownloadContacts())
   }
 
   applyFilter(filterValue: string) {

@@ -1,10 +1,12 @@
 <mat-sidenav-container>
-  <mat-sidenav id="drawer" #sidenav [mode]="mode.value" position="end" [ngSwitch]="formName">
+  <mat-sidenav id="drawer" #sidenav [mode]="mode.value" position="end" [ngSwitch]="drawerApp">
   <!-- START: Dynamic Drawer Content -->
 
     <app-contact-form-new *ngSwitchCase="'new_contact'"></app-contact-form-new>
+    <app-contact-detail *ngSwitchCase="'contact_detail'"></app-contact-detail>
     <app-organization-form-new *ngSwitchCase="'new_org'"></app-organization-form-new>
     <app-program-form-new *ngSwitchCase="'new_program'"></app-program-form-new>
+
 
 
   <!-- END: Dynamic Drawer Content -->

@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef} from '@angular/core'
 import {FormControl} from '@angular/forms';
 import { DrawerService } from './shared/drawer.service';
-
 import { NgSwitch } from '@angular/common';
 
+import { Store } from '@ngrx/store';
+import * as fromRoot from './store/app.reducer'
 
 @Component({
   selector: 'app-root',
@@ -13,16 +14,16 @@ import { NgSwitch } from '@angular/common';
 export class AppComponent implements OnInit{
   title = 'Rolodex';
   mode = new FormControl('over');
-  formName: string = "new_contact";
+  drawerApp: string
   @ViewChild('sidenav') sidenav;
 
-  constructor(private drawer: DrawerService){}
+  constructor(private store: Store<fromRoot.AppState>){}
 
   ngOnInit(){
-    this.drawer.formToDisplayOnDrawer
+    this.store.select('ui')
       .subscribe(
-        (formToDisplayOnDrawer: string) => {
-          this.formName = formToDisplayOnDrawer;
+        (uiState) => {
+          this.drawerApp = uiState.drawerApp;
           this.sidenav.toggle()
         }
       )//subscribe

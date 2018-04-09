@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { HeaderManagementService } from '../../shared/header-management.service';
 import { MatTableDataSource, MatSort } from '@angular/material';
-
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../store/app.reducer'
+import * as UI from '../../store/ui/ui.actions'
 
 
 @Component({
@@ -11,10 +12,10 @@ import { MatTableDataSource, MatSort } from '@angular/material';
 })
 export class OrganizationListComponent implements OnInit {
 
-  constructor(private headerService: HeaderManagementService) { }
+  constructor(private store: Store<fromRoot.AppState>) { }
 
   ngOnInit() {
-    this.headerService.pageTitle.next('Organizations');
+    this.store.dispatch(new UI.ChangeHeaderTitle('Organizations'))
   }
 
   displayedColumns = ['position', 'name', 'weight', 'symbol'];

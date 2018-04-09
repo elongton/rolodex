@@ -1,20 +1,25 @@
 import { Action } from '@ngrx/store';
-import { ContactActions, DOWNLOAD_CONTACTS, ADD_CONTACT } from './contact.actions';
+import { ContactActions, ADD_CONTACT, TRY_DOWNLOAD_CONTACTS, STORE_CONTACT_ARRAY} from './contact.actions';
 import { Contact } from '../contact.model';
 
 import * as fromRoot from '../../store/app.reducer';
 
 export interface ContactState {
   contacts: Contact[];
+  contactHttpState: boolean;
 };
 
 const initialState: ContactState = {
-  contacts: []
+  contacts: [],
+  contactHttpState: false
 };
 
 export function contactReducer(state = initialState, action: ContactActions) {
   switch (action.type) {
-    case DOWNLOAD_CONTACTS:
+    case TRY_DOWNLOAD_CONTACTS: {
+      return state
+      };
+    case STORE_CONTACT_ARRAY:
       return {
         ...state,
         contacts: action.payload

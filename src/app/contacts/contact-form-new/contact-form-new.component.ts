@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ContactService } from '../contact.service';
 import { Contact } from '../contact.model';
 import { Store } from '@ngrx/store';
 import * as CT from '../store/contact.actions';
+import * as UI from '../../store/ui/ui.actions'
 import * as fromRoot from '../../store/app.reducer'
 
 @Component({
@@ -13,14 +13,12 @@ import * as fromRoot from '../../store/app.reducer'
 })
 export class ContactFormNewComponent implements OnInit {
 
-  constructor(private contactService: ContactService,
-              private store: Store<fromRoot.State>) { }
+  constructor(private store: Store<fromRoot.AppState>) { }
 
   ngOnInit() {
   }
 
   onSubmit(form: NgForm){
-    this.contactService.addContact(form.value as Contact).subscribe();
     this.store.dispatch(new CT.AddContact(form.value as Contact))
     form.reset();
   }

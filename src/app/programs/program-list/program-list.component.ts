@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderManagementService } from '../../shared/header-management.service';
-
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../store/app.reducer'
+import * as UI from '../../store/ui/ui.actions'
 
 
 @Component({
@@ -11,10 +12,10 @@ import { HeaderManagementService } from '../../shared/header-management.service'
 export class ProgramListComponent implements OnInit {
   maxDate;
 
-  constructor(private headerService: HeaderManagementService) { }
+  constructor(private store: Store<fromRoot.AppState>) { }
 
   ngOnInit() {
-    this.headerService.pageTitle.next('Programs');
+    this.store.dispatch(new UI.ChangeHeaderTitle('Programs'))
     this.maxDate = new Date();
   }
 

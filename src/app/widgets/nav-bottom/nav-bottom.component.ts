@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {trigger, state, style, animate, transition} from '@angular/animations';
-import { DrawerService } from '../../shared/drawer.service';
+import * as UI from '../../store/ui/ui.actions'
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../store/app.reducer'
 // import { GlobalService } from '../../shared/global.service';
 
 @Component({
@@ -21,14 +23,14 @@ import { DrawerService } from '../../shared/drawer.service';
 export class NavBottomComponent implements OnInit {
 
   state='inactive';
-  constructor(private drawer: DrawerService,
-              // private globalService: GlobalService
-            ) { }
+  constructor(private store: Store<fromRoot.AppState>) { }
 
   ngOnInit() {}
 
   toggleState() {this.state = this.state === 'active' ? 'inactive' : 'active';}
-  slideDrawer(itemType){this.drawer.formToDisplayOnDrawer.next(itemType);}
+  slideDrawer(itemType){
+    this.store.dispatch(new UI.ChangeDrawerApp(itemType))
+  }
   onClickedOutside(){this.state = 'inactive';}
 }
 

@@ -14,21 +14,21 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProgramListComponent } from './programs/program-list/program-list.component';
 import { OrganizationListComponent } from './organizations/organization-list/organization-list.component';
-import { HeaderManagementService } from './shared/header-management.service';
 import { DrawerService } from './shared/drawer.service';
 import { InMemoryDataService }  from './shared/in-memory-data.service';
 import { NavBottomComponent } from './widgets/nav-bottom/nav-bottom.component';
 import { OrganizationFormNewComponent } from './organizations/organization-form-new/organization-form-new.component';
 import { ProgramFormNewComponent } from './programs/program-form-new/program-form-new.component';
 import { reducers } from './store/app.reducer';
+import { ContactEffects } from './contacts/store/contact.effects';
 
 
-import { ContactService } from './contacts/contact.service';
 import { ContactModule } from './contacts/contact.module';
 //external
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({
@@ -52,6 +52,7 @@ import { StoreModule } from '@ngrx/store';
     MaterialModule,
     ClickOutsideModule,
     StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([ContactEffects]),
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
@@ -59,10 +60,7 @@ import { StoreModule } from '@ngrx/store';
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
-  providers: [HeaderManagementService,
-              ContactService,
-              DrawerService
-              ],
+  providers: [DrawerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

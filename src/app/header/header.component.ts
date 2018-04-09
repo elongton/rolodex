@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderManagementService } from '../shared/header-management.service';
+import * as fromRoot from '../store/app.reducer'
+import { Store } from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
 
 
 @Component({
@@ -10,15 +12,14 @@ import { HeaderManagementService } from '../shared/header-management.service';
 export class HeaderComponent implements OnInit {
   pageTitle: string;
 
-  constructor(private headerService: HeaderManagementService) { }
+  constructor(private store: Store<fromRoot.AppState>) { }
 
-  ngOnInit() {
-    this.headerService.pageTitle
-      .subscribe(
-        (page: string) => {
-          this.pageTitle = page;
+  ngOnInit(){
+      this.store.select('ui').subscribe(
+        result => {
+          this.pageTitle = result.headerString
         }
-      )//subscribe
+      )
     }//ngOnInit()
 
 }

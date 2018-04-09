@@ -12,8 +12,4 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
   }
 
-  changeHeader(headerTitle){
-    console.log(headerTitle)
-  }
-
 }
