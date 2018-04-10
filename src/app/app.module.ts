@@ -14,7 +14,6 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProgramListComponent } from './programs/program-list/program-list.component';
 import { OrganizationListComponent } from './organizations/organization-list/organization-list.component';
-import { DrawerService } from './shared/drawer.service';
 import { InMemoryDataService }  from './shared/in-memory-data.service';
 import { NavBottomComponent } from './widgets/nav-bottom/nav-bottom.component';
 import { OrganizationFormNewComponent } from './organizations/organization-form-new/organization-form-new.component';
@@ -60,7 +59,7 @@ import { EffectsModule } from '@ngrx/effects';
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
-  providers: [DrawerService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

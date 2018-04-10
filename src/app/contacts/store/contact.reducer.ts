@@ -1,5 +1,9 @@
 import { Action } from '@ngrx/store';
-import { ContactActions, ADD_CONTACT, TRY_DOWNLOAD_CONTACTS, STORE_CONTACT_ARRAY} from './contact.actions';
+import { ContactActions,
+         ADD_CONTACT,
+         TRY_DOWNLOAD_CONTACTS,
+         STORE_CONTACT_ARRAY,
+         ASSIGN_DETAIL_ID,} from './contact.actions';
 import { Contact } from '../contact.model';
 
 import * as fromRoot from '../../store/app.reducer';
@@ -7,11 +11,13 @@ import * as fromRoot from '../../store/app.reducer';
 export interface ContactState {
   contacts: Contact[];
   contactHttpState: boolean;
+  detailViewID: number;
 };
 
 const initialState: ContactState = {
   contacts: [],
-  contactHttpState: false
+  contactHttpState: false,
+  detailViewID: 2,
 };
 
 export function contactReducer(state = initialState, action: ContactActions) {
@@ -23,6 +29,11 @@ export function contactReducer(state = initialState, action: ContactActions) {
       return {
         ...state,
         contacts: action.payload
+      };
+    case ASSIGN_DETAIL_ID:
+      return {
+        ...state,
+        detailViewID: action.payload
       };
     case ADD_CONTACT:
       return {

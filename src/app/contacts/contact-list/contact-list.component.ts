@@ -47,6 +47,9 @@ export class ContactListComponent implements OnInit {
   }
   clickedARow(row){
     console.log(row)
+    this.store.dispatch(new CT.AssignDetailID(row.id))
+    this.store.dispatch(new UI.OpenDrawer(true))
+    this.store.dispatch(new UI.ChangeDrawerApp('contact_detail'))
   }
 
 

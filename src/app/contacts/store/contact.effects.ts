@@ -42,15 +42,21 @@ export class ContactEffects {
     .map((action: ContactActions.AddContact) => {
       return action.payload;
     })
-    .switchMap( (contact: Contact) => {
+    .switchMap((contact: Contact) => {
       return this.http.post<Contact>(this.contactsUrl, contact, httpOptions)
     })
-    .map(response => {
-      console.log(response)
-      return {type: UIActions.STOP_LOADING}
+    .mergeMap(response => {
+      return [
+        {
+          type: ContactActions.ASSIGN_DETAIL_ID,
+          payload: response.id
+        },
+        {
+          type: UIActions.CHANGE_DRAWER_APP,
+          payload: 'contact_detail'
+        },
+      ]
     })
-
-
 
   constructor(private actions$: Actions, private http: HttpClient){
   }
