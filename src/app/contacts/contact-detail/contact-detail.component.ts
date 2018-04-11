@@ -12,6 +12,7 @@ import {Observable} from 'rxjs/Observable';
 export class ContactDetailComponent implements OnInit {
   contactDetail: Contact
   detailID: number
+  editmode: boolean = false
 
   constructor(private store: Store<fromRoot.AppState>) { }
 
@@ -21,8 +22,10 @@ export class ContactDetailComponent implements OnInit {
         this.detailID = contactState.detailViewID
         this.contactDetail = contactState.contacts.find(x => x.id == this.detailID);
       })
+  }//ngOnInit
 
-
+  changeMode(){
+    this.editmode = !this.editmode;
   }
 
 }

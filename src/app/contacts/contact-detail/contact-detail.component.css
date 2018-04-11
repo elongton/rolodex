@@ -1,0 +1,3 @@
+#edit{color: grey; display:none;}
+#detail-card, #close_edit{cursor: pointer;}
+#detail-card:hover #edit{display: block;}

@@ -1,8 +1,65 @@
-<mat-list>
- <mat-list-item>{{contactDetail.id}}</mat-list-item>
- <mat-list-item>{{contactDetail.first_name}}</mat-list-item>
- <mat-list-item>{{contactDetail.last_name}}</mat-list-item>
- <mat-list-item>{{contactDetail.email}}</mat-list-item>
- <mat-list-item>{{contactDetail.phone}}</mat-list-item>
- <mat-list-item>{{contactDetail.website}}</mat-list-item>
-</mat-list>
+
+<mat-card id="detail-card" *ngIf="!editmode" (click)="changeMode()">
+  <mat-icon style="position: absolute; top: 15px; right: 15px;" id="edit">mode_edit</mat-icon>
+  <mat-list>
+   <mat-list-item>{{contactDetail.id}}</mat-list-item>
+   <mat-list-item>{{contactDetail.first_name}}</mat-list-item>
+   <mat-list-item>{{contactDetail.last_name}}</mat-list-item>
+   <mat-list-item>{{contactDetail.email}}</mat-list-item>
+   <mat-list-item>{{contactDetail.phone}}</mat-list-item>
+  </mat-list>
+</mat-card>
+
+<mat-card id="update-card" *ngIf="editmode">
+  <mat-icon style="position: absolute; top: 15px; right: 15px;" id="close_edit" (click)="changeMode()">close</mat-icon>
+  <form fxLayout="column" fxLayoutAlign="flex-start flex-start" style="font-size: .8em;">
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        value={{contactDetail.first_name}}
+        placeholder="First Name"
+        name="first_name">
+        <!-- <mat-hint>Organization must exist</mat-hint> -->
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        placeholder="Last Name"
+        value={{contactDetail.last_name}}
+        name="last_name">
+        <!-- <mat-hint>Organization must exist</mat-hint> -->
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="email"
+        matInput
+        placeholder="Email"
+        value={{contactDetail.email}}
+        name="email"
+        email>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        placeholder="Organization"
+        value={{contactDetail.organization}}
+        name="organization">
+        <!-- <mat-hint>Organization must exist</mat-hint> -->
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="tel"
+        matInput
+        placeholder="Phone Number"
+        value={{contactDetail.phone}}
+        name="phone">
+    </mat-form-field>
+  </form>
+</mat-card>
