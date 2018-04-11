@@ -19,6 +19,7 @@ export class ContactFormNewComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
+    form.value.id = 10; //remove this in production, no need to add an ID if backend creates one
     this.store.dispatch(new CT.AddContact(form.value as Contact))
     form.reset();
   }

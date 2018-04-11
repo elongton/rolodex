@@ -31,7 +31,8 @@ export class ContactListComponent implements OnInit {
       .subscribe(contactstate => {
         this.contactListState.data = contactstate.contacts;
         this.contactListState.sort = this.sort;})
-    this.getContacts();
+    this.store.select('contact')
+      .subscribe(contactstate => { if (contactstate.contacts.length == 0){this.getContacts();}})
     }
 
 
