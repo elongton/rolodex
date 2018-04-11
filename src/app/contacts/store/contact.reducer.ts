@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
 import { ContactActions,
          ADD_CONTACT,
+         UPDATE_CONTACT,
          TRY_DOWNLOAD_CONTACTS,
          STORE_CONTACT_ARRAY,
          ASSIGN_DETAIL_ID,} from './contact.actions';
@@ -40,6 +41,11 @@ export function contactReducer(state = initialState, action: ContactActions) {
         ...state,
         contacts: [...state.contacts, action.payload]
       }
+    // case UPDATE_CONTACT:
+    //   return {
+    //     ...state,
+    //     contacts: [...state.contacts, action.payload]
+    //   }
     default: {
       return state;
     }
