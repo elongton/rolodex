@@ -14,7 +14,7 @@ import * as UI from './store/ui/ui.actions'
 export class AppComponent implements OnInit{
   title = 'Rolodex';
   mode = new FormControl('over');
-  drawerState: boolean;
+  drawerState: boolean = false;
   drawerApp: string
   @ViewChild('sidenav') sidenav;
 
@@ -37,7 +37,10 @@ export class AppComponent implements OnInit{
   //change editing state to false when drawer is closed.
   onPositionChange(openedState){
     if (openedState == false){
+      this.drawerState = false;
       this.store.dispatch(new UI.EditingItem(false))
+    } else {
+      this.drawerState = true;
     }
   }
 }

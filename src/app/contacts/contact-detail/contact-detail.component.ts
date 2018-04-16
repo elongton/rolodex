@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as CT from '../store/contact.actions';
 import * as UI from '../../store/ui/ui.actions';
@@ -15,18 +15,19 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   templateUrl: './contact-detail.component.html',
   styleUrls: ['./contact-detail.component.css']
 })
-export class ContactDetailComponent implements OnInit {
+export class ContactDetailComponent implements OnInit, OnDestroy {
   contactDetail: Contact
   detailID: number
   editMode$: boolean
   editForm: FormGroup
+  contactSubscription: Subscription
 
 
   constructor(private store: Store<fromRoot.AppState>) { }
 
   ngOnInit() {
     this.store.select('ui').subscribe(uiState => {this.editMode$ = uiState.editingItem})
-    this.store.select('contact')
+    this.contactSubscription = this.store.select('contact')
       .subscribe(contactState => {
         this.detailID = contactState.detailViewID
         this.contactDetail = contactState.contacts.find(x => x.id == this.detailID);
@@ -48,6 +49,16 @@ export class ContactDetailComponent implements OnInit {
     this.store.dispatch(new CT.UpdateContact({id: this.detailID, updatedContact: this.editForm.value}))
   }
 
+  onDelete(){
+    console.log('trying to delete')
+    // this.store.dispatch(new CT.DeleteContact(this.contactDetail.id))
+
+  }
+
+
+  ngOnDestroy(){
+
+  }
 
 
 }

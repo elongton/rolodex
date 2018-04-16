@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
 import { ContactActions,
          ADD_CONTACT,
+         DELETE_CONTACT,
          UPDATE_CONTACT,
          TRY_DOWNLOAD_CONTACTS,
          STORE_CONTACT_ARRAY,
@@ -42,7 +43,15 @@ export function contactReducer(state = initialState, action: ContactActions) {
         contacts: [...state.contacts, action.payload]
       }
 
-
+    case DELETE_CONTACT:
+      const oldContacts = [...state.contacts]
+      const contactToDelete = oldContacts.find(x => x.id == action.payload)
+      const contactToDeleteIndex = oldContacts.indexOf(contactToDelete)
+      oldContacts.splice(contactToDeleteIndex, 1)
+      return {
+        ...state,
+        contacts: oldContacts
+      }
 
     case UPDATE_CONTACT:
       const updatedContact = {...action.payload.updatedContact, id: action.payload.id}

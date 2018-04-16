@@ -66,7 +66,12 @@
         name="phone">
     </mat-form-field>
 
-    <button type="submit" mat-raised-button color="primary">Update</button>
+    <div style="width: 100%;" class="">
+      <button type="submit" mat-raised-button color="primary">Update</button>
+      <span fxFlex="1 1 auto"></span>
+      <button mat-raised-button  (click)="onDelete()">Delete</button>
+    </div>
+
   </form>
 
 

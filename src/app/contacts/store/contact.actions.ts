@@ -4,6 +4,7 @@ import { Contact } from '../contact.model';
 export const TRY_DOWNLOAD_CONTACTS = '[Contacts] Try to Download Contacts';
 export const STORE_CONTACT_ARRAY = '[Contacts] Store Contacts';
 export const ADD_CONTACT = '[Contacts] Add Contact'
+export const DELETE_CONTACT = '[Contacts] Delete Contact'
 export const UPDATE_CONTACT = '[Contacts] Update Contact'
 export const ASSIGN_DETAIL_ID = '[Contacts] Assign Detail View ID'
 
@@ -17,6 +18,11 @@ export class StoreContactArray implements Action {
 export class AddContact implements Action {
   readonly type = ADD_CONTACT;
   constructor(public payload: Contact){}
+}
+
+export class DeleteContact implements Action {
+  readonly type = DELETE_CONTACT;
+  constructor(public payload: number){}
 }
 
 export class UpdateContact implements Action {
@@ -36,6 +42,7 @@ export class TryDownloadContacts implements Action {
 
 export type ContactActions =  StoreContactArray |
                               AddContact |
+                              DeleteContact |
                               UpdateContact |
                               TryDownloadContacts |
                               AssignDetailID;
