@@ -1,5 +1,5 @@
 
-<mat-card id="detail-card" *ngIf="!editmode" (click)="changeMode()">
+<mat-card id="detail-card" *ngIf="!editMode$" (click)="changeMode()">
   <mat-icon style="position: absolute; top: 15px; right: 15px;" id="edit">mode_edit</mat-icon>
   <mat-list>
    <mat-list-item>{{contactDetail.first_name}}</mat-list-item>
@@ -9,7 +9,7 @@
   </mat-list>
 </mat-card>
 
-<mat-card id="update-card" *ngIf="editmode">
+<mat-card id="update-card" *ngIf="editMode$">
   <mat-icon style="position: absolute; top: 15px; right: 15px;" id="close_edit" (click)="changeMode()">close</mat-icon>
 
   <form fxLayout="column"

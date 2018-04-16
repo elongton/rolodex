@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as CT from '../store/contact.actions';
+import * as UI from '../../store/ui/ui.actions';
 import { NgForm } from '@angular/forms';
 import * as fromRoot from '../../store/app.reducer'
+import * as fromUI from '../../store/ui/ui.reducer'
 import { Contact } from '../contact.model';
 import {Observable} from 'rxjs/Observable';
+import {Subscription} from 'rxjs/Subscription';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -15,15 +18,14 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class ContactDetailComponent implements OnInit {
   contactDetail: Contact
   detailID: number
-  editmode: boolean = false
+  editMode$: boolean
   editForm: FormGroup
 
 
   constructor(private store: Store<fromRoot.AppState>) { }
 
   ngOnInit() {
-
-
+    this.store.select('ui').subscribe(uiState => {this.editMode$ = uiState.editingItem})
     this.store.select('contact')
       .subscribe(contactState => {
         this.detailID = contactState.detailViewID
@@ -32,18 +34,17 @@ export class ContactDetailComponent implements OnInit {
           'first_name' : new FormControl(this.contactDetail.first_name, Validators.required),
           'last_name' : new FormControl(this.contactDetail.last_name, Validators.required),
           'email' : new FormControl(this.contactDetail.email, [Validators.required, Validators.email]),
-          'organization': new FormControl('no org'),
+          'organization': new FormControl(this.contactDetail.organization),
           'phone' : new FormControl(this.contactDetail.phone)
         });
       })
   }//ngOnInit
 
   changeMode(){
-    this.editmode = !this.editmode;
+    this.store.dispatch(new UI.EditingItem(!this.editMode$))
   }
 
   onSubmit(){
-    console.log(this.editForm.value)
     this.store.dispatch(new CT.UpdateContact({id: this.detailID, updatedContact: this.editForm.value}))
   }
 

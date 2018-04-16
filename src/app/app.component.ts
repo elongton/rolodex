@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef} from '@angular/core'
+import { Component, OnInit, ViewChild, ElementRef, Input} from '@angular/core'
 import {FormControl} from '@angular/forms';
 import { NgSwitch } from '@angular/common';
 
@@ -18,6 +18,7 @@ export class AppComponent implements OnInit{
   drawerApp: string
   @ViewChild('sidenav') sidenav;
 
+
   constructor(private store: Store<fromRoot.AppState>){}
 
   ngOnInit(){
@@ -33,4 +34,10 @@ export class AppComponent implements OnInit{
       )//subscribe
   }//ngOnInit
 
+  //change editing state to false when drawer is closed.
+  onPositionChange(openedState){
+    if (openedState == false){
+      this.store.dispatch(new UI.EditingItem(false))
+    }
+  }
 }
