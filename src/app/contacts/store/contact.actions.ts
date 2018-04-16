@@ -21,7 +21,7 @@ export class AddContact implements Action {
 
 export class UpdateContact implements Action {
   readonly type = UPDATE_CONTACT;
-  constructor(public payload: number){}
+  constructor(public payload: {id: number, updatedContact: Contact}){}
 }
 
 export class AssignDetailID implements Action {

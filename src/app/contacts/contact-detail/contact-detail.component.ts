@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import * as CT from '../store/contact.actions';
 import { NgForm } from '@angular/forms';
 import * as fromRoot from '../../store/app.reducer'
 import { Contact } from '../contact.model';
@@ -42,7 +43,8 @@ export class ContactDetailComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.editForm)
+    console.log(this.editForm.value)
+    this.store.dispatch(new CT.UpdateContact({id: this.detailID, updatedContact: this.editForm.value}))
   }
 
 

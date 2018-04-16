@@ -41,11 +41,25 @@ export function contactReducer(state = initialState, action: ContactActions) {
         ...state,
         contacts: [...state.contacts, action.payload]
       }
-    // case UPDATE_CONTACT:
-    //   return {
-    //     ...state,
-    //     contacts: [...state.contacts, action.payload]
-    //   }
+
+
+
+    case UPDATE_CONTACT:
+      const updatedContact = {...action.payload.updatedContact, id: action.payload.id}
+      const contacts = [...state.contacts]
+      const contactToUpdate = contacts.find(x => x.id == action.payload.id)
+      const contactIndex = contacts.indexOf(contactToUpdate)
+      contacts[contactIndex] = updatedContact;
+      return {
+        ...state,
+        contacts: contacts
+      }
+
+
+
+
+
+
     default: {
       return state;
     }
