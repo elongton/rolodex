@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../modules/material.module';
 import { CoreModule } from '../modules/core.module';
 
@@ -19,6 +20,7 @@ import { ContactFormNewComponent } from './contact-form-new/contact-form-new.com
   ],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
     CoreModule,
   ],

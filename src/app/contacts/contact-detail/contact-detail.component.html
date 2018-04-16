@@ -11,44 +11,48 @@
 
 <mat-card id="update-card" *ngIf="editmode">
   <mat-icon style="position: absolute; top: 15px; right: 15px;" id="close_edit" (click)="changeMode()">close</mat-icon>
-  <form fxLayout="column" fxLayoutAlign="flex-start flex-start" style="font-size: .8em;" (ngSubmit)='onSubmit(f)' #f='ngForm'>
+
+  <form fxLayout="column"
+        fxLayoutAlign="flex-start flex-start"
+        style="font-size: .8em;"
+        [formGroup]="editForm"
+        (ngSubmit) = "onSubmit()">
     <mat-form-field>
       <input
         type="text"
         matInput
-        value={{contactDetail.first_name}}
+        formControlName="first_name"
         placeholder="First Name"
-        ngModel
         name="first_name">
-        <!-- <mat-hint>Organization must exist</mat-hint> -->
+        <mat-hint *ngIf="!editForm.get('first_name').valid && editForm.get('first_name').touched">Please enter a first name.</mat-hint>
     </mat-form-field>
 
     <mat-form-field>
       <input
         type="text"
         matInput
+        formControlName="last_name"
         placeholder="Last Name"
-        value={{contactDetail.last_name}}
         name="last_name">
-        <!-- <mat-hint>Organization must exist</mat-hint> -->
+        <mat-hint *ngIf="!editForm.get('last_name').valid && editForm.get('last_name').touched">Please enter a last name.</mat-hint>
     </mat-form-field>
 
     <mat-form-field>
       <input
         type="email"
         matInput
+        formControlName="email"
         placeholder="Email"
-        value={{contactDetail.email}}
-        name="email"
-        email>
+        name="email">
+        <mat-hint *ngIf="!editForm.get('email').valid && editForm.get('email').touched">Please enter valid email address.</mat-hint>
     </mat-form-field>
 
     <mat-form-field>
       <input
         type="text"
         matInput
+        formControlName="organization"
         placeholder="Organization"
-        value={{contactDetail.organization}}
         name="organization">
         <!-- <mat-hint>Organization must exist</mat-hint> -->
     </mat-form-field>
@@ -57,12 +61,14 @@
       <input
         type="tel"
         matInput
+        formControlName="phone"
         placeholder="Phone Number"
-        value={{contactDetail.phone}}
         name="phone">
     </mat-form-field>
 
-
     <button type="submit" mat-raised-button color="primary">Update</button>
   </form>
+
+
+
 </mat-card>

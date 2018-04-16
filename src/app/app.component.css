@@ -3,7 +3,8 @@
 }
 
 #drawer{
-  min-width: 40%;
+  min-width: 400px;
+  width: 40%;
   padding: 25px;}
 .dashed{border: 1px dashed black;}
 
