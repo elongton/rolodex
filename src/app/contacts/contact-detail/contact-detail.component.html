@@ -11,13 +11,14 @@
 
 <mat-card id="update-card" *ngIf="editmode">
   <mat-icon style="position: absolute; top: 15px; right: 15px;" id="close_edit" (click)="changeMode()">close</mat-icon>
-  <form fxLayout="column" fxLayoutAlign="flex-start flex-start" style="font-size: .8em;">
+  <form fxLayout="column" fxLayoutAlign="flex-start flex-start" style="font-size: .8em;" (ngSubmit)='onSubmit(f)' #f='ngForm'>
     <mat-form-field>
       <input
         type="text"
         matInput
         value={{contactDetail.first_name}}
         placeholder="First Name"
+        ngModel
         name="first_name">
         <!-- <mat-hint>Organization must exist</mat-hint> -->
     </mat-form-field>
@@ -60,5 +61,8 @@
         value={{contactDetail.phone}}
         name="phone">
     </mat-form-field>
+
+
+    <button type="submit" mat-raised-button color="primary">Update</button>
   </form>
 </mat-card>

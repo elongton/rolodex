@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { NgForm } from '@angular/forms';
 import * as fromRoot from '../../store/app.reducer'
 import { Contact } from '../contact.model';
 import {Observable} from 'rxjs/Observable';
@@ -26,6 +27,10 @@ export class ContactDetailComponent implements OnInit {
 
   changeMode(){
     this.editmode = !this.editmode;
+  }
+
+  onSubmit(form: NgForm){
+    console.log(form)
   }
 
 }
