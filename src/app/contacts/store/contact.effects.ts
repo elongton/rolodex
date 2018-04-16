@@ -56,7 +56,21 @@ export class ContactEffects {
           payload: 'contact_detail'
         },
       ]
+    });
+
+  @Effect()
+  updateContact = this.actions$
+    .ofType(ContactActions.UPDATE_CONTACT)
+    .map((action: ContactActions.UpdateContact) => {
+      return action.payload;
     })
+    .switchMap((result) => {
+      const mycontact = {...result.updatedContact, id: result.id}
+      return this.http.put<Contact>(this.contactsUrl, mycontact, httpOptions)
+    })
+    .map(() => {
+      return {type: UIActions.STOP_LOADING};
+    });
 
   constructor(private actions$: Actions, private http: HttpClient){
   }
