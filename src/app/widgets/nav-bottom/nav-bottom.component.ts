@@ -30,7 +30,7 @@ export class NavBottomComponent implements OnInit {
   toggleState() {this.state = this.state === 'active' ? 'inactive' : 'active';}
   slideDrawer(itemType){
     this.store.dispatch(new UI.ChangeDrawerApp(itemType))
-    this.store.dispatch(new UI.OpenDrawer(true))
+    this.store.dispatch(new UI.OpenDrawer())
   }
   onClickedOutside(){this.state = 'inactive';}
 }

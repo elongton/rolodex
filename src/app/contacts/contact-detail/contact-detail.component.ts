@@ -49,10 +49,9 @@ export class ContactDetailComponent implements OnInit, OnDestroy {
     this.store.dispatch(new CT.UpdateContact({id: this.detailID, updatedContact: this.editForm.value}))
   }
 
-  onDelete(){
-    console.log('trying to delete')
-    // this.store.dispatch(new CT.DeleteContact(this.contactDetail.id))
-
+  onDeleteContact(){
+    this.contactSubscription.unsubscribe();
+    this.store.dispatch(new CT.DeleteContact(this.contactDetail.id))
   }
 
 

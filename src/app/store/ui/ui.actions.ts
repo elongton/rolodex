@@ -4,7 +4,8 @@ export const START_LOADING = '[UI] Start Loading';
 export const STOP_LOADING = '[UI] Stop Loading';
 export const CHANGE_HEADER = '[UI] Change Header'
 export const CHANGE_DRAWER_APP = '[UI] Change Drawer APP'
-export const OPEN_DRAWER = '[UI] Open or Close the Drawer'
+export const OPEN_DRAWER = '[UI] Open the Drawer'
+export const CLOSE_DRAWER = '[UI] Close the Drawer'
 export const EDITING_ITEM = '[UI] Editing either Contact, Org, or Program'
 
 
@@ -15,7 +16,6 @@ export class StartLoading implements Action {
 export class StopLoading implements Action {
   readonly type = STOP_LOADING;
 }
-
 export class ChangeHeaderTitle implements Action {
   readonly type = CHANGE_HEADER;
   constructor(public payload: string){}
@@ -28,7 +28,9 @@ export class ChangeDrawerApp implements Action {
 
 export class OpenDrawer implements Action {
   readonly type = OPEN_DRAWER;
-  constructor(public payload: boolean){}
+}
+export class CloseDrawer implements Action {
+  readonly type = CLOSE_DRAWER;
 }
 
 export class EditingItem implements Action {
@@ -45,4 +47,5 @@ export type UIActions = StartLoading |
                         ChangeHeaderTitle |
                         ChangeDrawerApp |
                         EditingItem |
+                        CloseDrawer |
                         OpenDrawer ;

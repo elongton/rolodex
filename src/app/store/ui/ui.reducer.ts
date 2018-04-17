@@ -5,6 +5,7 @@ import { UIActions,
          CHANGE_HEADER,
          CHANGE_DRAWER_APP,
          EDITING_ITEM,
+         CLOSE_DRAWER,
          OPEN_DRAWER,} from './ui.actions';
 
 export interface State {
@@ -48,7 +49,12 @@ export function uiReducer(state = initialState, action: UIActions) {
     case OPEN_DRAWER:
       return {
         ...state,
-        drawerOpen: action.payload
+        drawerOpen: true
+      };
+    case CLOSE_DRAWER:
+      return {
+        ...state,
+        drawerOpen: false
       };
     case EDITING_ITEM: //this is used when editing a contact, program, or organization
       return {
