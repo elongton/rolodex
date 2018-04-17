@@ -18,7 +18,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class ContactDetailComponent implements OnInit, OnDestroy {
   contactDetail: Contact
   detailID: number
-  editMode$: boolean
+  editMode: boolean
   editForm: FormGroup
   contactSubscription: Subscription
 
@@ -26,7 +26,7 @@ export class ContactDetailComponent implements OnInit, OnDestroy {
   constructor(private store: Store<fromRoot.AppState>) { }
 
   ngOnInit() {
-    this.store.select('ui').subscribe(uiState => {this.editMode$ = uiState.editingItem})
+    this.store.select('ui').subscribe(uiState => {this.editMode = uiState.editingItem})
     this.contactSubscription = this.store.select('contact')
       .subscribe(contactState => {
         this.detailID = contactState.detailViewID
@@ -42,7 +42,7 @@ export class ContactDetailComponent implements OnInit, OnDestroy {
   }//ngOnInit
 
   changeMode(){
-    this.store.dispatch(new UI.EditingItem(!this.editMode$))
+    this.store.dispatch(new UI.EditingItem(!this.editMode))
   }
 
   onSubmit(){
@@ -52,6 +52,8 @@ export class ContactDetailComponent implements OnInit, OnDestroy {
   onDeleteContact(){
     this.contactSubscription.unsubscribe();
     this.store.dispatch(new CT.DeleteContact(this.contactDetail.id))
+    this.store.dispatch(new UI.CloseDrawer())
+    this.store.dispatch(new UI.ChangeDrawerApp(null))
   }
 
 

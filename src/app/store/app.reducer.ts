@@ -23,7 +23,5 @@ export const getContactState = createFeatureSelector<fromContact.ContactState>('
 
 
 //Define Selectors
-// export const isLoading = createSelector(getUiState, fromUi.getIsLoadingState);
-// export const headerTitle = createSelector(getUiState, fromUi.getHeaderState);
-// export const contactState = createSelector(getContactState, fromContact.getContactState);
 export const drawerState = createSelector(getUiState, fromUi.getIsDrawerOpen)
+export const drawerApp = createSelector(getUiState, fromUi.getDrawerApp)

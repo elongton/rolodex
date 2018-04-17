@@ -15,6 +15,8 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
+
+//////////////RETRIEVE///////////
 @Injectable()
 export class ContactEffects {
   private contactsUrl = 'api/contacts';  // URL to web api
@@ -36,6 +38,8 @@ export class ContactEffects {
       ];
     });
 
+
+  //////////////CREATE///////////
   @Effect()
   addContact = this.actions$
     .ofType(ContactActions.ADD_CONTACT)
@@ -58,6 +62,7 @@ export class ContactEffects {
       ]
     });
 
+  //////////////UPDATE///////////
   @Effect()
   updateContact = this.actions$
     .ofType(ContactActions.UPDATE_CONTACT)
@@ -71,6 +76,22 @@ export class ContactEffects {
     .map(() => {
       return {type: UIActions.STOP_LOADING};
     });
+
+    //////////////DELETE///////////
+    @Effect()
+    deleteContact = this.actions$
+      .ofType(ContactActions.DELETE_CONTACT)
+      .map((action: ContactActions.DeleteContact) => {
+        return action.payload;
+      })
+      .switchMap((result) => {
+        const deleteUrl = `${this.contactsUrl}/${result}`;
+        return this.http.delete(deleteUrl, httpOptions)
+      })
+      .map(() => {
+        return {type: UIActions.STOP_LOADING};
+      });
+
 
   constructor(private actions$: Actions, private http: HttpClient){
   }

@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, Input} from '@angular/core'
 import {FormControl} from '@angular/forms';
 import { NgSwitch } from '@angular/common';
+import {Observable} from 'rxjs/Observable';
+
 
 import { Store } from '@ngrx/store';
 import * as fromRoot from './store/app.reducer'
@@ -14,30 +16,25 @@ import * as UI from './store/ui/ui.actions'
 export class AppComponent implements OnInit{
   title = 'Rolodex';
   mode = new FormControl('over');
-  drawerState: boolean = false;
-  drawerApp: string
+  drawerState: boolean = false
+  drawerApp$: Observable<string>
   @ViewChild('sidenav') sidenav;
 
 
   constructor(private store: Store<fromRoot.AppState>){}
 
   ngOnInit(){
-    this.store.select('ui').subscribe(
-        (uiState) => {
-          this.drawerApp = uiState.drawerApp;
-          this.sidenav.open()
-          // if (uiState.drawerOpen == true){
-          //   this.sidenav.open();
-          //   this.store.dispatch(new UI.OpenDrawer(false))
-          // } else if (uiState.drawerOpen == false){
-          //   console.log("its closed")
-          // }
-        }
-      )//subscribe
-  }//ngOnInit
+    this.store.select(fromRoot.drawerState).subscribe(
+      (state) => {
+        if (state){this.sidenav.open()}
+        else {this.sidenav.close()}
+      });
+    this.drawerApp$ = this.store.select(fromRoot.drawerApp);
+  }//ngOnInit()
+
 
   //change editing state to false when drawer is closed.
-  onBackDropClick(){
-    console.log('it was clicked')
+  onBackDropClick(){ //used primarily to close the drawer
+    this.store.dispatch(new UI.CloseDrawer())
   }
 }

@@ -1,5 +1,5 @@
 <mat-sidenav-container  (backdropClick)=onBackDropClick()>
-  <mat-sidenav id="drawer" #sidenav [mode]="mode.value" position="end" [ngSwitch]="drawerApp">
+  <mat-sidenav id="drawer" #sidenav [mode]="mode.value" position="end"  [ngSwitch]="drawerApp$ | async">
   <!-- START: Dynamic Drawer Content -->
 
       <app-contact-form-new *ngSwitchCase="'new_contact'"></app-contact-form-new>

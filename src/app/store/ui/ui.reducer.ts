@@ -69,7 +69,7 @@ export function uiReducer(state = initialState, action: UIActions) {
 
 
 export const getIsDrawerOpen = (state: State) => state.drawerOpen;
-
+export const getDrawerApp = (state: State) => state.drawerApp;
 
 // export const getIsLoadingState = (state: UiState) => state.isLoading;
 // export const getHeaderState = (state: State) => state.headerString;
