@@ -39,9 +39,6 @@ export class EditingItem implements Action {
 }
 
 
-
-
-
 export type UIActions = StartLoading |
                         StopLoading |
                         ChangeHeaderTitle |

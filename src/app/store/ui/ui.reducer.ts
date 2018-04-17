@@ -68,5 +68,8 @@ export function uiReducer(state = initialState, action: UIActions) {
 }//uiReducer
 
 
+export const getIsDrawerOpen = (state: State) => state.drawerOpen;
+
+
 // export const getIsLoadingState = (state: UiState) => state.isLoading;
 // export const getHeaderState = (state: State) => state.headerString;

@@ -13,9 +13,17 @@ export const reducers: ActionReducerMap<AppState> = {
 };
 
 
-// export const getUiState = createFeatureSelector<fromUi.State>('ui');
-// export const getContactState = createFeatureSelector<fromContact.ContactState>('contact');
+//Define Slice Feature Selectors
+export const getUiState = createFeatureSelector<fromUi.State>('ui');
+export const getContactState = createFeatureSelector<fromContact.ContactState>('contact');
 //created selectors
+
+
+
+
+
+//Define Selectors
 // export const isLoading = createSelector(getUiState, fromUi.getIsLoadingState);
 // export const headerTitle = createSelector(getUiState, fromUi.getHeaderState);
 // export const contactState = createSelector(getContactState, fromContact.getContactState);
+export const drawerState = createSelector(getUiState, fromUi.getIsDrawerOpen)
