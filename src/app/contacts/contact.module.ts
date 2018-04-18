@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../modules/material.module';
 import { CoreModule } from '../modules/core.module';
 
-import { ContactItemComponent } from './contact-item/contact-item.component';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import { ContactFilterPipe } from './contact-filter.pipe';
@@ -12,7 +11,6 @@ import { ContactFormNewComponent } from './contact-form-new/contact-form-new.com
 
 @NgModule({
   declarations: [
-    ContactItemComponent,
     ContactListComponent,
     ContactDetailComponent,
     ContactFilterPipe,
@@ -25,7 +23,6 @@ import { ContactFormNewComponent } from './contact-form-new/contact-form-new.com
     CoreModule,
   ],
   exports: [
-    ContactItemComponent,
     ContactListComponent,
     ContactDetailComponent,
     ContactFormNewComponent

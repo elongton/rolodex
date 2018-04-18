@@ -1,14 +1,10 @@
-    #container{
-      /* display: flex; */
-      width: 100%;
-      /* flex-direction: row; */
-      /* justify-content: center; */
-      /* align-items: center; */
-      /* border: 1px solid black; */
-    }
+table{
+  width: 100%;
+}
 
-    .child{height: 200px; width: 200px;}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
 
-    #child1{background-color: red;}
-    #child2{background-color: green;}
-    #child3{background-color: blue;}
+mat-row{cursor: pointer;}
