@@ -4,31 +4,36 @@
 
       <mat-table #table [dataSource]="orgListState" matSort>
         <!-- Organization Column -->
-        <ng-container matColumnDef="last_name">
+        <ng-container matColumnDef="name">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Organization Name </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
         </ng-container>
 
         <!-- Contacts Column -->
-        <ng-container matColumnDef="organization">
+        <ng-container matColumnDef="contacts">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Contacts </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.contacts[0]}} </mat-cell>
+          <mat-cell *matCellDef="let element">
+            {{element.contacts[0]}},
+            {{element.contacts[1]}},
+            {{element.contacts[2]}}, 
+            {{element.contacts[3]}}
+          </mat-cell>
         </ng-container>
 
         <!-- Website Column -->
-        <ng-container matColumnDef="phone">
+        <ng-container matColumnDef="website">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Website </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.website}} </mat-cell>
         </ng-container>
 
         <!-- Programs Hosted Column -->
-        <ng-container matColumnDef="email">
+        <ng-container matColumnDef="programs_hosted">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Programs Hosted </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.programs_hosted}} </mat-cell>
         </ng-container>
 
         <!-- Newsletter Column -->
-        <ng-container matColumnDef="email">
+        <ng-container matColumnDef="newsletter">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Newsletter </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.newsletter}} </mat-cell>
         </ng-container>

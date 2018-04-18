@@ -12,11 +12,16 @@ import * as UI from '../../store/ui/ui.actions'
 })
 export class OrganizationListComponent implements OnInit {
 
-  constructor(private store: Store<fromRoot.AppState>) { }
-
   orgList: any[]
   orgListState =  new MatTableDataSource();
+  @ViewChild(MatSort) sort: MatSort;
   displayedColumns = ['name', 'contacts', 'website', 'programs_hosted', 'newsletter'];
+
+
+
+  constructor(private store: Store<fromRoot.AppState>) { }
+
+
   ngOnInit() {
     this.store.dispatch(new UI.ChangeHeaderTitle('Organizations'))
     this.orgList = [
@@ -27,6 +32,7 @@ export class OrganizationListComponent implements OnInit {
        newsletter: true,
       }]
     this.orgListState.data = this.orgList
+    this.orgListState.sort = this.sort;
   }
 
   ngAfterViewInit() {}
