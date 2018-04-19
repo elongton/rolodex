@@ -24,13 +24,7 @@ export class OrganizationListComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new UI.ChangeHeaderTitle('Organizations'))
-    this.orgList = [
-      {name: 'Demco',
-       contacts: ['Bob', 'Sally', 'Cheryl', 'David'],
-       website: 'demcosoftware.com',
-       programs_hosted: 5,
-       newsletter: true,
-      }]
+    this.orgList = []
     this.orgListState.data = this.orgList
     this.orgListState.sort = this.sort;
   }

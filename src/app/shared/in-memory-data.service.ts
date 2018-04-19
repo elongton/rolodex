@@ -9,12 +9,6 @@ export class InMemoryDataService implements InMemoryDbService {
         organization:'Toys are Us',
         email:'johndoe@gmail.com',
         phone:'804-203-4828'
-        // website:'john.com',
-        // street_address: '9238 John Circle',
-        // city:'Richmond',
-        // state:'Virginia',
-        // zip:'32324',
-        // notes:'John is a good guy. He always uses nice language'
       },
       { id: 2,
         first_name:'Mary',
@@ -22,12 +16,6 @@ export class InMemoryDataService implements InMemoryDbService {
         organization:'Blargin',
         email:'blargzor@gmail.com',
         phone:'804-223-4548'
-        // website:'john.com',
-        // street_address: '9238 John Circle',
-        // city:'Richmond',
-        // state:'Virginia',
-        // zip:'32324',
-        // notes:'John is a good guy. He always uses nice language'
       },
       { id: 3,
         first_name:'Laurel',
@@ -35,12 +23,6 @@ export class InMemoryDataService implements InMemoryDbService {
         organization:'Laurax Studios',
         email:'laurel.smith@lauraxstudios.com',
         phone:'804-203-4828'
-        // website:'john.com',
-        // street_address: '9238 John Circle',
-        // city:'Richmond',
-        // state:'Virginia',
-        // zip:'32324',
-        // notes:'John is a good guy. He always uses nice language'
       },
       { id: 4,
         first_name:'Johnny',
@@ -48,12 +30,6 @@ export class InMemoryDataService implements InMemoryDbService {
         organization:'MI7',
         email:'johnny@mi7.org',
         phone:'804-232-9847'
-        // website:'john.com',
-        // street_address: '9238 John Circle',
-        // city:'Richmond',
-        // state:'Virginia',
-        // zip:'32324',
-        // notes:'John is a good guy. He always uses nice language'
       },
       { id: 5,
         first_name:'Rick',
@@ -61,14 +37,28 @@ export class InMemoryDataService implements InMemoryDbService {
         organization:'Rin Tin Tin',
         email:'tinnerbach@gmail.com',
         phone:'202-494-0494'
-        // website:'john.com',
-        // street_address: '9238 John Circle',
-        // city:'Richmond',
-        // state:'Virginia',
-        // zip:'32324',
-        // notes:'John is a good guy. He always uses nice language'
       }
     ];
-    return {contacts};
+    const organizations = [
+        {id: 1,
+         name: 'Demco',
+         contacts: ['Bob', 'Sally', 'Cheryl', 'David'],
+         website: 'demcosoftware.com',
+         programs_hosted: 5,
+         newsletter: true,
+        }
+    ]
+    const programs = [
+        {id: 1,
+         name: 'Fun at the Park',
+         contact: 'Maggie Johnson',
+         location: 'West End',
+         genre: 'Technology',
+         age_group: 'K-12',
+         date: '04-15-2018',
+         past_dates: '10-12-2017'
+        }
+    ]
+    return {contacts, organizations, programs};
   }
 }

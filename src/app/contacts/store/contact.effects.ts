@@ -93,7 +93,6 @@ export class ContactEffects {
       });
 
 
-  constructor(private actions$: Actions, private http: HttpClient){
-  }
+  constructor(private actions$: Actions, private http: HttpClient){}
 
 }
