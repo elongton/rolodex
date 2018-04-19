@@ -3,7 +3,7 @@ import { MatTableDataSource, MatSort } from '@angular/material';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../store/app.reducer'
 import * as UI from '../../store/ui/ui.actions'
-
+import * as OR from '../store/organization.actions'
 
 @Component({
   selector: 'app-organization-list',
@@ -24,9 +24,15 @@ export class OrganizationListComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new UI.ChangeHeaderTitle('Organizations'))
+    this.getOrgs();
     this.orgList = []
     this.orgListState.data = this.orgList
     this.orgListState.sort = this.sort;
+  }
+
+  getOrgs(){
+    this.store.dispatch(new UI.StartLoading())
+    this.store.dispatch(new OR.TryDownloadOrgs())
   }
 
   ngAfterViewInit() {}
