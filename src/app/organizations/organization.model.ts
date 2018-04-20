@@ -1,4 +1,3 @@
-import { Contact } from '../contacts/contact.model'
 
 export class Organization {
   constructor(public id: number,
