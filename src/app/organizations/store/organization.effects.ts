@@ -28,8 +28,7 @@ export class OrganizationEffects {
     .ofType(OrganizationActions.TRY_DOWNLOAD_ORGANIZATIONS)
     .switchMap( () => {
       this.store.dispatch(new UI.StartLoading())
-      console.log("got to the switchmap")
-      return this.http.get<Organization[]>(this.orgsUrl).map((result)=>{console.log(result); return result;})
+      return this.http.get<Organization[]>(this.orgsUrl)
     })
     .mergeMap((orgList: Organization[]) => {
       return [

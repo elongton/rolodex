@@ -21,7 +21,7 @@ export function orgReducer(state = initialState, action: OrganizationActions) {
     case STORE_ORGANIZATION_ARRAY:
       return {
         ...state,
-        contacts: action.payload
+        orgs: action.payload
       };
     default: {
       return state;
