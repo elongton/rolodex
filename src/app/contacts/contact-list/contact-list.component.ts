@@ -37,7 +37,6 @@ export class ContactListComponent implements OnInit {
 
 
   getContacts(){
-    this.store.dispatch(new UI.StartLoading())
     this.store.dispatch(new CT.TryDownloadContacts())
   }
 

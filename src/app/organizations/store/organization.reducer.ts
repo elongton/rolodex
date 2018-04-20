@@ -30,4 +30,4 @@ export function orgReducer(state = initialState, action: OrganizationActions) {
 }
 
 
-export const getOrgState = (state: OrgState) => state.orgs;
+export const getOrgListState = (state: OrgState) => state.orgs;

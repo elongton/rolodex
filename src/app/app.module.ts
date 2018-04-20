@@ -20,6 +20,7 @@ import { NavBottomComponent } from './widgets/nav-bottom/nav-bottom.component';
 import { ProgramFormNewComponent } from './programs/program-form-new/program-form-new.component';
 import { reducers } from './store/app.reducer';
 import { ContactEffects } from './contacts/store/contact.effects';
+import { OrganizationEffects } from './organizations/store/organization.effects';
 
 import { OrganizationModule } from './organizations/organization.module';
 import { ContactModule } from './contacts/contact.module';
@@ -50,7 +51,7 @@ import { EffectsModule } from '@ngrx/effects';
     MaterialModule,
     ClickOutsideModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([ContactEffects]),
+    EffectsModule.forRoot([ContactEffects, OrganizationEffects]),
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.

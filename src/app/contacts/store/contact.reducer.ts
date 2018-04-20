@@ -64,11 +64,6 @@ export function contactReducer(state = initialState, action: ContactActions) {
         contacts: contacts
       }
 
-
-
-
-
-
     default: {
       return state;
     }

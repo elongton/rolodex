@@ -2,6 +2,9 @@
 <section style="padding: 10px;">
   <div class="mat-elevation-z4">
 
+      {{orgasm | async}}
+
+
       <mat-table #table [dataSource]="orgListState" matSort>
         <!-- Organization Column -->
         <ng-container matColumnDef="name">
@@ -15,7 +18,7 @@
           <mat-cell *matCellDef="let element">
             {{element.contacts[0]}},
             {{element.contacts[1]}},
-            {{element.contacts[2]}}, 
+            {{element.contacts[2]}},
             {{element.contacts[3]}}
           </mat-cell>
         </ng-container>

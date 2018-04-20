@@ -1,11 +1,12 @@
 import { Actions, Effect } from '@ngrx/effects'
 import { Injectable } from '@angular/core';
 import { Contact } from '../contact.model';
-
+import { Store } from '@ngrx/store';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import * as UI from '../../store/ui/ui.actions'
 import * as ContactActions from './contact.actions'
 import * as UIActions from '../../store/ui/ui.actions';
+import * as fromRoot from '../../store/app.reducer'
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/mergeMap';
@@ -24,6 +25,7 @@ export class ContactEffects {
   downloadContacts = this.actions$
     .ofType(ContactActions.TRY_DOWNLOAD_CONTACTS)
     .switchMap( () => {
+      this.store.dispatch(new UI.StartLoading())
       return this.http.get<Contact[]>(this.contactsUrl)
     })
     .mergeMap((contacts: Contact[]) => {
@@ -93,6 +95,6 @@ export class ContactEffects {
       });
 
 
-  constructor(private actions$: Actions, private http: HttpClient){}
+  constructor(private actions$: Actions, private http: HttpClient, private store: Store<fromRoot.AppState>){}
 
 }

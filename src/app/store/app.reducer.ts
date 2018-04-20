@@ -18,8 +18,15 @@ export const reducers: ActionReducerMap<AppState> = {
 //Define Slice Feature Selectors
 export const getUiState = createFeatureSelector<fromUi.State>('ui');
 export const getContactState = createFeatureSelector<fromContact.ContactState>('contact');
+export const getOrgState = createFeatureSelector<fromOrg.OrgState>('organization');
 //created selectors
 
 //Define Selectors
+
+//ui stuff
 export const drawerState = createSelector(getUiState, fromUi.getIsDrawerOpen)
 export const drawerApp = createSelector(getUiState, fromUi.getDrawerApp)
+
+
+//org stuff
+export const orgListState = createSelector(getOrgState, fromOrg.getOrgListState)
