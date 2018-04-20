@@ -79,12 +79,21 @@ export class InMemoryDataService implements InMemoryDbService {
     const programs = [
         {id: 1,
          name: 'Fun at the Park',
-         contact: 'Maggie Johnson',
-         location: 'West End',
-         genre: 'Technology',
-         age_group: 'K-12',
          date: '04-15-2018',
-         past_dates: '10-12-2017'
+         time: '12:00PM - 2:00PM',
+         organization: 'Ginter Park',
+         primary_contacts: 'Kerry Phillips',
+         latest_rating: '4/5',
+         average_rating: '4.8/5'
+        },
+        {id: 2,
+         name: 'Teaching Computers',
+         date: '04-10-2018',
+         time: '9:00AM - 2:00PM',
+         organization: 'West End',
+         primary_contacts: 'Lisa Coleman',
+         latest_rating: '2/5',
+         average_rating: '2/5'
         }
     ]
     return {contacts, organizations, programs};
