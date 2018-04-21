@@ -17,7 +17,11 @@ export class OrganizationListComponent implements OnInit {
   isLoading: Observable<fromUi.State>
   orgListState =  new MatTableDataSource();
   @ViewChild(MatSort) sort: MatSort;
-  displayedColumns = ['name', 'contacts', 'website', 'programs_hosted', 'newsletter'];
+  displayedColumns = ['name',
+                      'contacts',
+                      'website',
+                      'programs_hosted',
+                      'newsletter'];
 
   constructor(private store: Store<fromRoot.AppState>) { }
 

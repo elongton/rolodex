@@ -1,10 +1,78 @@
-<div style="padding: 10px;">
-  <mat-card>
-    <mat-form-field>
-      <input matInput placeholder="Program Date" [matDatepicker]="picker" [max]="maxDate">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-  </mat-card>
 
+<div fxLayout="column" fxLayoutAlign="center center" *ngIf="(isLoading | async).isLoading" style="height: calc(100vh - 60px);">
+  <mat-spinner></mat-spinner>
 </div>
+
+
+
+<section style="padding: 10px;" [hidden]="(isLoading | async).isLoading">
+  <div class="mat-elevation-z4">
+
+      <div style="padding: 8px 24px 0; min-height: 64px;" fxLayout="row">
+        <mat-form-field >
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+        <span fxFlex="1 1 auto"></span>
+        <mat-form-field>
+          <input matInput placeholder="Program Date" [matDatepicker]="picker" [max]="maxDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <button mat-button (click)='getProgs()'>Reload</button>
+      </div>
+
+
+
+
+      <mat-table #table [dataSource]="progListState" matSort>
+        <!-- Program Name Column -->
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Program Name </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+        </ng-container>
+
+        <!-- Date Column -->
+        <ng-container matColumnDef="date">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.date}}</mat-cell>
+        </ng-container>
+
+        <!-- Time Column -->
+        <ng-container matColumnDef="time">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Time</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.time}} </mat-cell>
+        </ng-container>
+
+        <!-- Organization Column -->
+        <ng-container matColumnDef="organization">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Organization</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.organization}} </mat-cell>
+        </ng-container>
+
+        <!-- Primary Contacts Column -->
+        <ng-container matColumnDef="primary_contacts">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Primary Contact(s)</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.primary_contacts}}</mat-cell>
+        </ng-container>
+
+        <!-- Latest Rating Column -->
+        <ng-container matColumnDef="latest_rating">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Latest Rating</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.latest_rating}}</mat-cell>
+        </ng-container>
+
+        <!-- Average Rating Column -->
+        <ng-container matColumnDef="average_rating">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Average Rating</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.average_rating}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="clickedARow(row)"></mat-row>
+      </mat-table>
+  </div>
+
+
+
+
+</section>
