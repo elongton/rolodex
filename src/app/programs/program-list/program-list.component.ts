@@ -49,14 +49,11 @@ export class ProgramListComponent implements OnInit {
     this.progListState.filter = filterValue;
   }
 
-
   clickedARow(row){
     console.log(row)
     this.store.dispatch(new PR.AssignDetailID(row.id))
     this.store.dispatch(new UI.OpenDrawer())
     this.store.dispatch(new UI.ChangeDrawerApp('program_detail'))
   }
-
-
 
 }

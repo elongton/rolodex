@@ -32,14 +32,21 @@ export class OrganizationDetailComponent implements OnInit {
       .subscribe(orgState => {
         this.detailID = orgState.detailViewID
         this.orgDetail = orgState.orgs.find(x => x.id == this.detailID);
-        // this.editForm = new FormGroup({
-        //   'first_name' : new FormControl(this.contactDetail.first_name, Validators.required),
-        //   'last_name' : new FormControl(this.contactDetail.last_name, Validators.required),
-        //   'email' : new FormControl(this.contactDetail.email, [Validators.required, Validators.email]),
-        //   'organization': new FormControl(this.contactDetail.organization),
-        //   'phone' : new FormControl(this.contactDetail.phone)
-        // });
+        this.editForm = new FormGroup({
+          'name' : new FormControl(this.orgDetail.name, Validators.required),
+          'newsletter' : new FormControl(this.orgDetail.newsletter, Validators.required),
+          'website' : new FormControl(this.orgDetail.website, [Validators.required, Validators.email]),
+          'programs_hosted': new FormControl(this.orgDetail.programs_hosted),
+        });
       })
   }//ngOnInit
+
+  changeMode(){
+    this.store.dispatch(new UI.EditingItem(!this.editMode))
+  }
+
+  onSubmit(){
+    // this.store.dispatch(new OR.UpdateOrganization({id: this.detailID, updatedOrg: this.editForm.value}))
+  }
 
 }

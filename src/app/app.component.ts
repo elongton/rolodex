@@ -36,5 +36,10 @@ export class AppComponent implements OnInit{
   //change editing state to false when drawer is closed.
   onBackDropClick(){ //used primarily to close the drawer
     this.store.dispatch(new UI.CloseDrawer())
+    //this is set up to emulate when the drawer closes
+    setTimeout(()=>{
+      this.store.dispatch(new UI.EditingItem(false))
+    },500)
+
   }
 }
