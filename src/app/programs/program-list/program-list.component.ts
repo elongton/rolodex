@@ -2,10 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import * as fromRoot from '../../store/app.reducer'
-import * as fromUi from '../../store/ui/ui.reducer';
-import * as UI from '../../store/ui/ui.actions'
-import * as PR from '../store/program.actions'
+import * as fromRoot from '../../store/app.reducer';
+import * as fromUI from '../../store/ui/ui.reducer';
+import * as UI from '../../store/ui/ui.actions';
+import * as PR from '../store/program.actions';
 
 @Component({
   selector: 'app-program-list',
@@ -14,8 +14,8 @@ import * as PR from '../store/program.actions'
 })
 
 export class ProgramListComponent implements OnInit {
-  maxDate;
-  isLoading: Observable<fromUI.State>
+
+  isLoading: Observable<fromUI.State>;
   progListState = new MatTableDataSource();
   @ViewChild(MatSort) sort: MatSort;
   displayedColumns = ['name',
@@ -25,9 +25,8 @@ export class ProgramListComponent implements OnInit {
                       'primary_contacts',
                       'latest_rating',
                       'average_rating'];
-
+  maxDate;
   constructor(private store: Store<fromRoot.AppState>) { }
-
   ngOnInit() {
     this.store.dispatch(new UI.ChangeHeaderTitle('Programs'))
     this.isLoading = this.store.select('ui')
@@ -53,6 +52,9 @@ export class ProgramListComponent implements OnInit {
 
   clickedARow(row){
     console.log(row)
+    this.store.dispatch(new PR.AssignDetailID(row.id))
+    this.store.dispatch(new UI.OpenDrawer())
+    this.store.dispatch(new UI.ChangeDrawerApp('program_detail'))
   }
 
 

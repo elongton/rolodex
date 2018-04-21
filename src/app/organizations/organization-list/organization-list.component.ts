@@ -49,6 +49,9 @@ export class OrganizationListComponent implements OnInit {
 
   clickedARow(row){
     console.log(row)
+    this.store.dispatch(new OR.AssignDetailID(row.id))
+    this.store.dispatch(new UI.OpenDrawer())
+    this.store.dispatch(new UI.ChangeDrawerApp('org_detail'))
   }
 
   ngAfterViewInit() {}
