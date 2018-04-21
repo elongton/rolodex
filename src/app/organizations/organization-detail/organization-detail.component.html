@@ -3,8 +3,78 @@
   <mat-list>
    <mat-list-item>{{orgDetail.name}}</mat-list-item>
    <mat-list-item>{{orgDetail.contacts}}</mat-list-item>
-   <mat-list-item>{{orgDetail.newsletter}}</mat-list-item>
    <mat-list-item>{{orgDetail.website}}</mat-list-item>
    <mat-list-item>{{orgDetail.programs_hosted}}</mat-list-item>
+   <mat-list-item>{{orgDetail.newsletter}}</mat-list-item>
   </mat-list>
+</mat-card>
+
+
+<mat-card id="update-card" *ngIf="editMode">
+  <mat-icon style="position: absolute; top: 15px; right: 15px;" id="close_edit" (click)="changeMode()">close</mat-icon>
+
+  <form fxLayout="column"
+        fxLayoutAlign="flex-start flex-start"
+        style="font-size: .8em;"
+        [formGroup]="editForm"
+        (ngSubmit) = "onSubmit()">
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        formControlName="name"
+        placeholder="Name"
+        name="name">
+        <mat-hint *ngIf="!editForm.get('name').valid && editForm.get('name').touched">Please enter an organization name.</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        formControlName="contacts"
+        placeholder="Contacts"
+        name="contacts">
+        <mat-hint *ngIf="!editForm.get('contacts').valid && editForm.get('contacts').touched">Contact required.</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        formControlName="website"
+        placeholder="Website"
+        name="website">
+        <mat-hint *ngIf="!editForm.get('website').valid && editForm.get('website').touched">Please enter a website.</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        formControlName="programs_hosted"
+        placeholder="Programs Hosted"
+        name="programs_hosted">
+        <!-- <mat-hint>Organization must exist</mat-hint> -->
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="tel"
+        matInput
+        formControlName="phone"
+        placeholder="Phone Number"
+        name="phone">
+    </mat-form-field>
+
+    <div style="width: 100%;" class="">
+      <button type="submit" mat-raised-button color="primary">Update</button>
+      <span fxFlex="1 1 auto"></span>
+      <button mat-raised-button type="button" (click)="onDeleteContact()">Delete</button>
+    </div>
+
+  </form>
+
+
+
 </mat-card>

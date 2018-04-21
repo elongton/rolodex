@@ -34,9 +34,10 @@ export class OrganizationDetailComponent implements OnInit {
         this.orgDetail = orgState.orgs.find(x => x.id == this.detailID);
         this.editForm = new FormGroup({
           'name' : new FormControl(this.orgDetail.name, Validators.required),
-          'newsletter' : new FormControl(this.orgDetail.newsletter, Validators.required),
+          'contacts' : new FormControl(this.orgDetail.contacts, Validators.required),
           'website' : new FormControl(this.orgDetail.website, [Validators.required, Validators.email]),
           'programs_hosted': new FormControl(this.orgDetail.programs_hosted),
+          'newsletter' : new FormControl(this.orgDetail.newsletter, Validators.required),
         });
       })
   }//ngOnInit
