@@ -1,3 +1,99 @@
-<p>
-  program-detail works!
-</p>
+<mat-card id="detail-card" *ngIf="!editMode" (click)="changeMode()">
+  <mat-icon style="position: absolute; top: 15px; right: 15px;" id="edit">mode_edit</mat-icon>
+  <mat-list>
+   <mat-list-item>{{progDetail.name}}</mat-list-item>
+   <mat-list-item>{{progDetail.date}}</mat-list-item>
+   <mat-list-item>{{progDetail.time}}</mat-list-item>
+   <mat-list-item>{{progDetail.organization}}</mat-list-item>
+   <mat-list-item>{{progDetail.primary_contacts}}</mat-list-item>
+   <mat-list-item>{{progDetail.latest_rating}}</mat-list-item>
+   <mat-list-item>{{progDetail.average_rating}}</mat-list-item>
+  </mat-list>
+</mat-card>
+
+<mat-card id="update-card" *ngIf="editMode">
+  <mat-icon style="position: absolute; top: 15px; right: 15px;" id="close_edit" (click)="changeMode()">close</mat-icon>
+
+  <form fxLayout="column"
+        fxLayoutAlign="flex-start flex-start"
+        style="font-size: .8em;"
+        [formGroup]="editForm"
+        (ngSubmit) = "onSubmit()">
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        formControlName="name"
+        placeholder="Name"
+        name="name">
+        <mat-hint *ngIf="!editForm.get('name').valid && editForm.get('name').touched">Please enter an organization name.</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        formControlName="date"
+        placeholder="Date"
+        name="date">
+        <mat-hint *ngIf="!editForm.get('date').valid && editForm.get('date').touched">Date required.</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        formControlName="time"
+        placeholder="Time"
+        name="time">
+        <mat-hint *ngIf="!editForm.get('time').valid && editForm.get('time').touched">Please enter a time.</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        formControlName="organization"
+        placeholder="Organization"
+        name="organization">
+        <!-- <mat-hint>Organization must exist</mat-hint> -->
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        formControlName="primary_contacts"
+        placeholder="Primary Contacts"
+        name="primary_contacts">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        formControlName="latest_rating"
+        placeholder="Latest Rating"
+        name="latest_rating">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        formControlName="average_rating"
+        placeholder="Average Rating"
+        name="average_rating">
+    </mat-form-field>
+
+    <div style="width: 100%;" class="">
+      <button type="submit" mat-raised-button color="primary">Update</button>
+      <span fxFlex="1 1 auto"></span>
+      <button mat-raised-button type="button" (click)="onDeleteContact()">Delete</button>
+    </div>
+
+  </form>
+
+
+
+</mat-card>
