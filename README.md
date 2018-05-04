@@ -1,14 +1,14 @@
 # Rolodex
 
-This project allows organizations who run programs to log, assess, search, and filter those programs.
+This project allows organizations who run programs to log, assess, search, and filter those programs.  It is made up of 4 different components:
 
-## Program
+### Program
 
-## Organization
+### Organization
 
-## Contact
+### Contact
 
-
+### Admin
 
 ## Angular Project Details
 
