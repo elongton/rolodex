@@ -1,5 +1,17 @@
 # Rolodex
 
+This project allows organizations who run programs to log, assess, search, and filter those programs.
+
+## Program
+
+## Organization
+
+## Contact
+
+
+
+## Angular Project Details
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
 
 ## Development server
