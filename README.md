@@ -15,13 +15,13 @@ This project allows organizations who run programs to log, assess, search, and f
 #### Add Contact
 
 ##### Open the drawer with correct form
-The form is triggered by the "widgets/nav-bottom" component. Next, the following progression occurs:
+The form is triggered by the "widgets/nav-bottom" component. Next:
 - Button in component calls a function via (click) listener: "slideDrawer('new_contact')
-- The argument, new_contact is passed to the nav-bottom component's instance of store, this.store.dispactch(new UI.ChangeDrawerApp(new_contact), which changes the content in the drawer
+- The argument, new_contact is passed to the nav-bottom component's instance of store, this.store.dispactch(new UI.ChangeDrawerApp(new_contact), which adds the component "contact-form-new" to the drawer
 - The drawer is opened by calling "this.store.dispatch(new UI.OpenDrawer()).
 ##### Submit form
-Here, we use a child component named "contact-form-new" which provides an html form template file and business logic required to add a new contact.
-
+The user fills out the form defined by "contact-form-new.component.html" and taps the submit button.  The form utilizes the template approach to creating forms in Angular. The submit button is 
+-The following
 
 #### Delete Contact
 #### Edit Contact
