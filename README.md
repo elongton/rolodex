@@ -6,7 +6,11 @@ This project allows organizations who run programs to log, assess, search, and f
 
 ### Organization
 
-### Contact
+### Contacts
+
+#### Add Contact
+#### Delete Contact
+#### Edit Contact
 
 ### Admin
 
