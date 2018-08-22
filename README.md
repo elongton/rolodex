@@ -15,7 +15,7 @@ This project allows organizations who run programs to log, assess, search, and f
 #### Add Contact
 
 ##### Open the drawer with correct form
-The form is triggered by the "widgets/nav-bottom" component. Next:
+The form is triggered by the "widgets/nav-bottom" component.
 - Button in component calls a function via (click) listener: "slideDrawer('new_contact')
 - The argument, new_contact is passed to the nav-bottom component's instance of store, this.store.dispactch(new UI.ChangeDrawerApp(new_contact), which adds the component "contact-form-new" to the drawer
 - The drawer is opened by calling "this.store.dispatch(new UI.OpenDrawer()).
