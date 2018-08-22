@@ -2,7 +2,11 @@
 
 This project allows organizations who run programs to log, assess, search, and filter those programs.  It is made up of 4 different components:
 
-## Sliding Window
+## Drawer
+The drawer component is the main medium on desktop sized devices for CUD (create, update, and destroy) type actions.
+
+The drawer canvas is stored on the top layer html template or root module. 
+
 
 ## Main Components
 
