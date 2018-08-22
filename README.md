@@ -20,8 +20,10 @@ The form is triggered by the "widgets/nav-bottom" component. Next:
 - The argument, new_contact is passed to the nav-bottom component's instance of store, this.store.dispactch(new UI.ChangeDrawerApp(new_contact), which adds the component "contact-form-new" to the drawer
 - The drawer is opened by calling "this.store.dispatch(new UI.OpenDrawer()).
 ##### Submit form
-The user fills out the form defined by "contact-form-new.component.html" and taps the submit button.  The form utilizes the template approach to creating forms in Angular. The submit button is 
--The following
+The user fills out the form defined by "contact-form-new.component.html" and taps the submit button.  The form utilizes the template approach of creating forms in Angular. The form click listener (ngSubmit) calls a function, onSubmit(f), which uses a local reference, #f = 'ngForm'.  
+- onSubmit() calls the dispatch method of the component's instance of store, this.store.dispatch(new CT.AddContact(form.value as Contact)
+- the CT.AddContact object is dispatched, and this updates the store with a new contact
+- the dispatch method is intercepted by the contact.effects.ts file which updates the database with http.post
 
 #### Delete Contact
 #### Edit Contact
