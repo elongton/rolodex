@@ -1,5 +1,7 @@
 # Rolodex
 
+This app makes storing contacts/organizations and their programs fun by utilizing the great features of Angular5 and Material. Users will be able to quickly add a new contact, organization or program and rate them.  Later, they can search any of these objects using various filters or by creating a query.
+
 This project allows organizations who run programs to log, assess, search, and filter those programs.  It is made up of 4 different components:
 
 ## Drawer
